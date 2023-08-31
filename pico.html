@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Company example • Pico.css</title>
+    <meta name="description" content="A classic company or blog layout with a sidebar. Built with Pico CSS." />
+    <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
+    <link rel="canonical" href="https://picocss.com/examples/company/" />
+
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="custom.css" />
+
+    <!-- Minimal theme switcher -->
+    <script src="minimal-theme-switcher.js"></script>
+
+    <!-- Alpine JS https://alpinejs.dev/ -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Type It https://www.typeitjs.com/-->
+    <script src="https://unpkg.com/typeit@7.0.4/dist/typeit.min.js"></script>
+
+    <style scoped>
+        /* Theme-Switcher */
+        input[theme-switcher]::before {
+            background-color: #ffffff !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 24 24' class='vt-switch-appearance-sun'%3E%3Cpath style='fill:black' d='M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6zm0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0-4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1zm0 20c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1zM5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3zm14.2 14.2c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3zM3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1zm20 0h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1zM4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3zM18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3z'/%3E%3C/svg%3E");
+            background-size: 80% 80%;
+            background-position: center;
+        }
+
+        input[theme-switcher]:checked::before {
+            background-color: #11191f !important;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' viewBox='0 0 24 24' class='vt-switch-appearance-moon'%3E%3Cpath style='fill:white' d='M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5.2.3.2.8-.1 1.1-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2zM9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2z'/%3E%3C/svg%3E");
+            background-size: 80% 80%;
+            background-position: center;
+        }
+
+        nav.nav {
+            position: fixed;
+            /*background-color: var(--background-color);*/
+
+            background-color: color-mix(in srgb, #000, transparent 50%);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(2px);
+            /*border-radius: 0px 0px 10px 10px;*/
+            /*border-bottom: 1px solid rgba(255, 255, 255, 0.18);*/
+        }
+
+        footer nav[aria-label=breadcrumb] ul li:not(:last-child) ::after {
+            content: "•​";
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NavBar -->
+    <nav class="container-fluid nav">
+        <ul>
+            <li>
+                <a href="./" class="contrast" onclick="event.preventDefault()"><strong>Brand</strong></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li><a href="#intro">Home</a></li>
+            <li><a href="#features">Caratteristiche</a></li>
+            <li><a href="#installation">Installazione</a></li>
+            <li><a href="#examples">Esempi</a></li>
+            <li><a href="#contact">Contatti</a></li>
+        </ul>
+        <ul>
+            <li>
+                <details role="list" dir="rtl">
+                    <summary aria-haspopup="listbox" role="link" class="contrast">Theme</summary>
+                    <ul role="listbox">
+                        <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+                        <li><a href="#" data-theme-switcher="light">Light</a></li>
+                        <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <input type="checkbox" theme-switcher role="switch" checked />
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <div id="intro" class="hero" data-theme="dark"><br><br><br><br> <!-- TEST -->
+        <header class="container">
+            <hgroup>
+                <h1>Semplificando l'Accesso alle Mappe Catastali</h1>
+                <h2>Scopri come il nostro script rende facile l'accesso alle mappe catastali su PUC.</h2>
+            </hgroup>
+            <p><a href="#features" role="button" onclick="event.preventDefault()">Scopri di più</a></p>
+        </header>
+    </div>
+    <!-- ./ Hero -->
+
+    <!-- Main -->
+    <main id="features" class="container">
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h2>Ut sit amet sem ut velit</h2>
+                    <h3>Quisque mi est</h3>
+                </hgroup>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lobortis est vel
+                    velit bibendum ultrices. Sed aliquam tortor vel odio fermentum ullamcorper eu vitae
+                    neque. Sed non diam at tellus venenatis viverra. Vestibulum et leo laoreet arcu tempor
+                    eleifend venenatis ac leo. Pellentesque euismod justo sed nisl sollicitudin varius. Duis
+                    venenatis nisl sit amet ante rutrum posuere. Etiam nec ullamcorper leo, sed placerat
+                    mauris.
+                </p>
+                <figure>
+                    <img src="img/ashim-d-silva-3Ijt7UkSBYE-unsplash-1500x750.jpg" alt="Architecture" />
+                    <figcaption>
+                        Image from
+                        <a href="https://unsplash.com/photos/3Ijt7UkSBYE" target="_blank">unsplash.com</a>
+                    </figcaption>
+                </figure>
+                <h3>Nulla augue metus</h3>
+                <p>
+                    Pacilisis sed ante ut, posuere volutpat quam. Maecenas maximus blandit mi ac finibus.
+                    Proin quis lacinia tellus. Aliquam erat volutpat. Aliquam erat volutpat. Phasellus
+                    suscipit nisi augue, id accumsan tortor auctor ut. Duis odio arcu, egestas nec nulla
+                    vel, fermentum bibendum ex.
+                </p>
+                <h3>Sed purus sapien, porta a cursus sed, maximus et metus.</h3>
+                <p>
+                    Phasellus molestie ante sed massa bibendum, eget tempus ex sollicitudin. Vestibulum
+                    libero nulla, porttitor nec faucibus et, scelerisque eget quam. Nullam finibus tempor
+                    dui, vel congue urna condimentum ac. Fusce ultricies mauris justo, nec vulputate mauris
+                    pulvinar eu. Sed tempus ligula lorem, at tincidunt risus mollis non. Quisque et turpis
+                    sit amet sapien gravida ullamcorper in eu velit. Curabitur luctus ornare finibus. Proin
+                    tempor nulla sagittis est fermentum dapibus. Vestibulum posuere mattis congue. Ut
+                    porttitor id sem euismod tristique. Quisque mi est, posuere nec lorem eu, vulputate
+                    vehicula diam. Nullam scelerisque, libero posuere efficitur bibendum, urna odio finibus
+                    lorem, sed volutpat dolor ligula in dolor. Suspendisse suscipit efficitur neque, ut
+                    porta tellus mollis vel. Nam consequat arcu ac tellus porta, nec egestas orci sodales.
+                </p>
+                <blockquote>
+                    "Maecenas vehicula metus tellus, vitae congue turpis hendrerit non.
+                    Nam at dui sit amet ipsum cursus ornare."
+                    <footer>
+                        <cite>- Phasellus eget lacinia</cite>
+                    </footer>
+                </blockquote>
+            </section>
+
+            <aside>
+                <h3>News</h3>
+                <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                        src="img/maarten-deckers-T5nXYXCf50I-unsplash-1500x750.jpg" alt="Architecture" /></a>
+                <p>
+                    <a href="#" onclick="event.preventDefault()">Donec sit amet</a><br />
+                    <small>Class aptent taciti sociosqu ad litora torquent per conubia nostra</small>
+                </p>
+                <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                        src="img/daniel-von-appen-tb4heMa-ZRo-unsplash-1500-750.jpg" alt="Architecture" /></a>
+                <p>
+                    <a href="#" onclick="event.preventDefault()">Suspendisse potenti</a><br />
+                    <small>Proin non condimentum tortor. Donec in feugiat sapien.</small>
+                </p>
+                <a href="#" aria-label="Example" onclick="event.preventDefault()"><img
+                        src="img/matthew-hamilton-Ru3Ap8TNcsk-unsplash-1500-750.jpg" alt="Architecture" /></a>
+                <p>
+                    <a href="#" onclick="event.preventDefault()">Nullam lobortis placerat aliquam</a><br />
+                    <small>Maecenas vitae nibh blandit dolor commodo egestas vel eget neque. Praesent semper
+                        justo orci, vel imperdiet mi auctor in.</small>
+                </p>
+            </aside>
+        </div>
+    </main>
+    <!-- ./ Main -->
+
+    <!-- Subscribe -->
+    <section aria-label="Subscribe example">
+        <div class="container">
+            <article>
+                <hgroup>
+                    <h2>Subscribe</h2>
+                    <h3>Litora torquent per conubia nostra</h3>
+                </hgroup>
+                <form class="grid">
+                    <input type="text" id="firstname" name="firstname" placeholder="First name" aria-label="First name"
+                        required />
+                    <input type="email" id="email" name="email" placeholder="Email address" aria-label="Email address"
+                        required />
+                    <button type="submit" onclick="event.preventDefault()">Subscribe</button>
+                </form>
+            </article>
+        </div>
+    </section>
+    <!-- ./ Subscribe -->
+
+    <!-- Footer -->
+    <footer class="container-fluid" style="background-color: var(--card-background-color);">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ul>
+                    <li><a href="#intro">Home</a></li>
+                    <li><a href="#features">Caratteristiche</a></li>
+                    <li><a href="#installation">Installazione</a></li>
+                    <li><a href="#examples">Esempi</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            <small>
+                <nav aria-label="breadcrumb">
+                    <ul>
+                        <li>Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
+                        </li>
+                        <li>Code licensed <a href="https://github.com/picocss/pico/blob/master/LICENSE.md"
+                                class="secondary">MIT</a></li>
+                        <li><a href="https://picocss.com/third-party/" class="secondary">Third-Party
+                                Tools</a>
+                        </li>
+                    </ul>
+                </nav>
+            </small>
+        </div>
+    </footer>
+    <!-- ./ Footer -->
+
+    <!-- https://picocss.com/third-party/ -->
+
+</body>
+
+</html>
