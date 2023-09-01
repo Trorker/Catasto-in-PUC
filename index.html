@@ -173,115 +173,122 @@
         </article>
     </dialog>
 
-    <!-- Main -->
-    <main class="content">
+    <!-- Hero -->
+    <header id="intro" class="hero" data-theme="dark"><br><br><br><br><br><br><br><br> <!-- TEST -->
+        <!-- NavBar -->
+        <nav id="navbar" class="nav container-fluid">
+            <ul>
+                <li>
+                    <a href="./" class="contrast" onclick="event.preventDefault()">
+                        <kbd><small>by Trorker</small></kbd>
+                    </a>
+                </li>
+            </ul>
+            <ul class="responsive_nav">
+                <li><a href="#intro">Home</a></li>
+                <li><a href="#features">Caratteristiche</a></li>
+                <li><a href="#installation">Installazione</a></li>
+                <li><a href="#examples">Esempi</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+            <ul>
+                <li style="display: none;">
+                    <details role="list" dir="rtl">
+                        <summary aria-haspopup="listbox" role="link" class="contrast">Examples (v1)</summary>
+                        <ul role="listbox">
+                            <li><a href="../v1-preview/">Preview</a></li>
+                            <li><a href="../v1-preview-rtl/">Right-to-left</a></li>
+                            <li><a href="../v1-classless/">Classless</a></li>
+                            <li><a href="../v1-basic-template/">Basic template</a></li>
+                            <li><a href="../v1-company/">Company</a></li>
+                            <li><a href="../v1-google-amp/">Google Amp</a></li>
+                            <li><a href="../v1-sign-in/">Sign in</a></li>
+                            <li><a href="../v1-bootstrap-grid/">Bootstrap grid</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li style="display: none;">
+                    <details role="list" dir="rtl">
+                        <summary aria-haspopup="listbox" role="link" class="contrast">Theme</summary>
+                        <ul role="listbox">
+                            <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+                            <li><a href="#" data-theme-switcher="light">Light</a></li>
+                            <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+                        </ul>
+                    </details>
+                </li>
+                <li>
+                    <input type="checkbox" theme-switcher role="switch" checked />
+                </li>
+                <li class="responsive_nav_menu">
+                    <!-- Button to trigger the modal -->
+                    <a href="#" class="contrast" data-target="modal-example" onClick="toggleModal(event)">
+                        <span class="material-symbols-outlined">menu</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-        <!-- Hero -->
-        <header id="intro" class="hero" data-theme="dark"><br><br><br><br><br><br><br><br> <!-- TEST -->
-            <!-- NavBar -->
-            <nav id="navbar" class="nav container-fluid">
-                <ul>
-                    <li>
-                        <a href="./" class="contrast" onclick="event.preventDefault()">
-                            <kbd><small>by Trorker</small></kbd>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="responsive_nav">
-                    <li><a href="#intro">Home</a></li>
-                    <li><a href="#features">Caratteristiche</a></li>
-                    <li><a href="#installation">Installazione</a></li>
-                    <li><a href="#examples">Esempi</a></li>
-                    <li><a href="#contact">Contatti</a></li>
-                </ul>
-                <ul>
-                    <li style="display: none;">
-                        <details role="list" dir="rtl">
-                            <summary aria-haspopup="listbox" role="link" class="contrast">Examples (v1)</summary>
-                            <ul role="listbox">
-                                <li><a href="../v1-preview/">Preview</a></li>
-                                <li><a href="../v1-preview-rtl/">Right-to-left</a></li>
-                                <li><a href="../v1-classless/">Classless</a></li>
-                                <li><a href="../v1-basic-template/">Basic template</a></li>
-                                <li><a href="../v1-company/">Company</a></li>
-                                <li><a href="../v1-google-amp/">Google Amp</a></li>
-                                <li><a href="../v1-sign-in/">Sign in</a></li>
-                                <li><a href="../v1-bootstrap-grid/">Bootstrap grid</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li style="display: none;">
-                        <details role="list" dir="rtl">
-                            <summary aria-haspopup="listbox" role="link" class="contrast">Theme</summary>
-                            <ul role="listbox">
-                                <li><a href="#" data-theme-switcher="auto">Auto</a></li>
-                                <li><a href="#" data-theme-switcher="light">Light</a></li>
-                                <li><a href="#" data-theme-switcher="dark">Dark</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li>
-                        <input type="checkbox" theme-switcher role="switch" checked />
-                    </li>
-                    <li class="responsive_nav_menu">
-                        <!-- Button to trigger the modal -->
-                        <a href="#" class="contrast" data-target="modal-example" onClick="toggleModal(event)">
-                            <span class="material-symbols-outlined">menu</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <script>
-                var navbar = document.getElementById("navbar");
-                var sticky = navbar.offsetTop;
-                window.onscroll = () => {
-                    if (window.pageYOffset >= sticky) {
-                        //navbar.style.margin = "0 auto";
-                        navbar.classList.add("sticky");
-                    } else {
-                        //navbar.style.margin = "5% auto";
-                        navbar.classList.remove("sticky");
-                    }
-                };
-
-                loadBg = () => { //motivational-background
-                    const photo = "maps";
-                    //document.body.style.backgroundImage = `url(https://source.unsplash.com/1920x1080/?motivational-background&${new Date().getTime()})`;
-                    fetch(`https://source.unsplash.com/1920x1080/?${photo}#${new Date().getTime()}`)
-                        .then(response => response.blob())
-                        .then(async blob => {
-                            var urlCreator = window.URL || window.webkitURL;
-                            var imageUrl = urlCreator.createObjectURL(blob);
-                            document.querySelector("#intro").style.background = `url(${imageUrl})`;
-
-                            const colorThief = new ColorThief();
-                            let img = document.createElement('img');
-                            img.onload = (e) => {
-                                const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
-                                    const hex = x.toString(16)
-                                    return hex.length === 1 ? '0' + hex : hex
-                                }).join('')
-
-                                let hexColor = rgbToHex(...colorThief.getColor(img)); // #663399
-                                console.log(hexColor);
-
-                                document.documentElement.style.setProperty('--your-variable', '#YOURCOLOR');
-                                document.querySelector("#intro > header").style.color = hexColor;
-                            }
-                            img.src = imageUrl;
-                        });
+        <script>
+            var navbar = document.getElementById("navbar");
+            var sticky = navbar.offsetTop;
+            window.onscroll = () => {
+                if (window.pageYOffset >= sticky) {
+                    //navbar.style.margin = "0 auto";
+                    navbar.classList.add("sticky");
+                } else {
+                    //navbar.style.margin = "5% auto";
+                    navbar.classList.remove("sticky");
                 }
-                loadBg();
-            </script>
-            <header class="container">
-                <hgroup>
-                    <h1>Semplificando l'Accesso alle Mappe Catastali</h1>
-                    <h2>Scopri come il nostro script rende facile l'accesso alle mappe catastali su PUC.</h2>
-                </hgroup>
-                <p><a href="#features" role="button" onclick="event.preventDefault()">Scopri di più</a></p>
-            </header>
+            };
+
+            loadBg = () => { //motivational-background
+                const photo = "maps";
+                //document.body.style.backgroundImage = `url(https://source.unsplash.com/1920x1080/?motivational-background&${new Date().getTime()})`;
+                fetch(`https://source.unsplash.com/1920x1080/?${photo}#${new Date().getTime()}`)
+                    .then(response => response.blob())
+                    .then(async blob => {
+                        var urlCreator = window.URL || window.webkitURL;
+                        var imageUrl = urlCreator.createObjectURL(blob);
+                        document.querySelector("#intro").style.background = `url(${imageUrl})`;
+
+                        const colorThief = new ColorThief();
+                        let img = document.createElement('img');
+                        img.onload = (e) => {
+                            const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
+                                const hex = x.toString(16)
+                                return hex.length === 1 ? '0' + hex : hex
+                            }).join('')
+
+                            let hexColor = rgbToHex(...colorThief.getColor(img)); // #663399
+                            console.log(hexColor);
+
+                            document.documentElement.style.setProperty('--your-variable', '#YOURCOLOR');
+                            document.querySelector("#intro > header").style.color = hexColor;
+                        }
+                        img.src = imageUrl;
+                    });
+            }
+            loadBg();
+        </script>
+        <header class="container">
+            <hgroup>
+                <h1>Semplificando l'Accesso alle Mappe Catastali</h1>
+                <h2>Scopri come il nostro script rende facile l'accesso alle mappe catastali su PUC.</h2>
+            </hgroup>
+            <p><a href="#features" role="button" onclick="event.preventDefault()">Scopri di più</a></p>
         </header>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <section class="container" id="intro">
+            <h2 class="heading">Introduzione</h2>
+            <p>Lo script per l'integrazione delle mappe catastali è un progetto sviluppato da Ruslan Dzyuba, un tecnico
+                di e-distribuzione. Lo script consente di visualizzare e consultare le mappe catastali direttamente
+                dalla piattaforma PUC, eliminando la necessità di passare a diverse applicazioni o siti web per accedere
+                a queste importanti informazioni.</p>
+        </section>
         <!-- ./ Hero -->
         <section id="features" class="container">
             <div class="grid">
@@ -358,7 +365,17 @@
                 </aside>
             </div>
         </section>
-        <!-- ./ Main -->
+
+
+        <section class="container" id="installation">
+            <h2 class="heading">Come Installare e Utilizzare lo Script</h2>
+            <ol class="list">
+                <li>Installa l'estensione "Violentmonkey" su Google Chrome.</li>
+                <li>Aggiungi lo script personalizzato.</li>
+                <li>Visualizza le mappe catastali direttamente su PUC.</li>
+            </ol>
+        </section>
+
 
         <!-- Subscribe -->
         <section aria-label="Subscribe example">
