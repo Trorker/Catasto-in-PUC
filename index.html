@@ -131,6 +131,18 @@
 
             height: 100vh;
         }
+
+        /* Main */
+        @media (min-width: 992px) {
+            #features .grid {
+                grid-column-gap: var(--spacing-company);
+                grid-template-columns: auto 25%;
+            }
+        }
+
+        form.grid {
+            grid-row-gap: 0;
+        }
     </style>
 </head>
 
@@ -142,11 +154,16 @@
             </a>
             <h3>Menu</h3>
             <div class="grid">
-                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Home</button></div>
-                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Caratteristiche</button></div>
-                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Installazione</button></div>
-                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Esempi</button></div>
-                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Contatti</button></div>
+                <div><button onClick="toggleModal(event)" data-target="modal-example"
+                        class="secondary outline">Home</button></div>
+                <div><button onClick="toggleModal(event)" data-target="modal-example"
+                        class="secondary outline">Caratteristiche</button></div>
+                <div><button onClick="toggleModal(event)" data-target="modal-example"
+                        class="secondary outline">Installazione</button></div>
+                <div><button onClick="toggleModal(event)" data-target="modal-example"
+                        class="secondary outline">Esempi</button></div>
+                <div><button onClick="toggleModal(event)" data-target="modal-example"
+                        class="secondary outline">Contatti</button></div>
             </div>
             <footer>
                 <small>
@@ -229,7 +246,7 @@
                 };
 
                 loadBg = () => { //motivational-background
-                    const photo = "nature";
+                    const photo = "maps";
                     //document.body.style.backgroundImage = `url(https://source.unsplash.com/1920x1080/?motivational-background&${new Date().getTime()})`;
                     fetch(`https://source.unsplash.com/1920x1080/?${photo}#${new Date().getTime()}`)
                         .then(response => response.blob())
