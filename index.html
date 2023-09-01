@@ -27,6 +27,22 @@
     <!-- COLOR THIEF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24;
+            transform: translateY(4px);
+        }
+    </style>
+
+    <script src="modal.js"></script>
+
     <style scoped>
         /* Theme-Switcher */
         input[theme-switcher]::before {
@@ -63,10 +79,32 @@
             right: 0;
             width: 90%;
 
+            padding-right: calc(var(--spacing) + var(--scrollbar-width, 0));
+
             -webkit-transition: width .3s ease-in-out, border-radius .5s ease-in-out;
             -moz-transition: width .3s ease-in-out, border-radius .5s ease-in-out;
             -o-transition: width .3s ease-in-out, border-radius .5s ease-in-out;
             transition: width .3s ease-in-out, border-radius .5s ease-in-out;
+        }
+
+        nav .responsive_nav {
+            display: none;
+        }
+
+        nav .responsive_nav_menu {
+            display: inline;
+        }
+
+        @media (min-width: 768px) {
+            nav .responsive_nav {
+                display: inline;
+            }
+        }
+
+        @media (min-width: 768px) {
+            nav .responsive_nav_menu {
+                display: none;
+            }
         }
 
         nav.nav.sticky {
@@ -97,6 +135,27 @@
 </head>
 
 <body>
+    <!-- Modal -->
+    <dialog id="modal-example">
+        <article style="min-width: 80%;">
+            <a href="#close" aria-label="Close" class="close" data-target="modal-example" onClick="toggleModal(event)">
+            </a>
+            <h3>Menu</h3>
+            <div class="grid">
+                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Home</button></div>
+                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Caratteristiche</button></div>
+                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Installazione</button></div>
+                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Esempi</button></div>
+                <div><button onClick="toggleModal(event)" data-target="modal-example" class="secondary outline">Contatti</button></div>
+            </div>
+            <footer>
+                <small>
+                    Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
+                </small>
+            </footer>
+        </article>
+    </dialog>
+
     <!-- Main -->
     <main class="content">
 
@@ -111,7 +170,7 @@
                         </a>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
+                <ul class="responsive_nav">
                     <li><a href="#intro">Home</a></li>
                     <li><a href="#features">Caratteristiche</a></li>
                     <li><a href="#installation">Installazione</a></li>
@@ -119,6 +178,21 @@
                     <li><a href="#contact">Contatti</a></li>
                 </ul>
                 <ul>
+                    <li style="display: none;">
+                        <details role="list" dir="rtl">
+                            <summary aria-haspopup="listbox" role="link" class="contrast">Examples (v1)</summary>
+                            <ul role="listbox">
+                                <li><a href="../v1-preview/">Preview</a></li>
+                                <li><a href="../v1-preview-rtl/">Right-to-left</a></li>
+                                <li><a href="../v1-classless/">Classless</a></li>
+                                <li><a href="../v1-basic-template/">Basic template</a></li>
+                                <li><a href="../v1-company/">Company</a></li>
+                                <li><a href="../v1-google-amp/">Google Amp</a></li>
+                                <li><a href="../v1-sign-in/">Sign in</a></li>
+                                <li><a href="../v1-bootstrap-grid/">Bootstrap grid</a></li>
+                            </ul>
+                        </details>
+                    </li>
                     <li style="display: none;">
                         <details role="list" dir="rtl">
                             <summary aria-haspopup="listbox" role="link" class="contrast">Theme</summary>
@@ -131,6 +205,12 @@
                     </li>
                     <li>
                         <input type="checkbox" theme-switcher role="switch" checked />
+                    </li>
+                    <li class="responsive_nav_menu">
+                        <!-- Button to trigger the modal -->
+                        <a href="#" class="contrast" data-target="modal-example" onClick="toggleModal(event)">
+                            <span class="material-symbols-outlined">menu</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -286,6 +366,7 @@
         <!-- Footer -->
         <footer class="container-fluid" style="background-color: var(--card-background-color);">
             <div class="container">
+                <!-- Main 
                 <nav aria-label="breadcrumb">
                     <ul>
                         <li><a href="#intro">Home</a></li>
@@ -294,7 +375,7 @@
                         <li><a href="#examples">Esempi</a></li>
                         <li><a href="#contact">Contatti</a></li>
                     </ul>
-                </nav>
+                </nav>-->
                 <small>
                     <nav aria-label="breadcrumb">
                         <ul>
