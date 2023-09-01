@@ -62,8 +62,6 @@
         nav.nav {
             /*background-color: var(--background-color);*/
 
-            /*background-color: color-mix(in srgb, var(--card-background-color), transparent 80%);*/
-
             background: rgba(255, 255, 255, 0.25);
             box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
             backdrop-filter: blur(4px);
@@ -71,7 +69,11 @@
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.18);
 
+            background-color: color-mix(in srgb, var(--background-color), transparent 25%);
+
             white-space: nowrap;
+
+            z-index: 9999;
 
             position: absolute;
             top: 10%;
@@ -112,6 +114,8 @@
             top: 0;
             width: 100%;
             border-radius: 0px;
+            border: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
         }
 
         footer nav[aria-label=breadcrumb] ul li:not(:last-child) ::after {
@@ -126,8 +130,11 @@
         .hero {
             background-color: #394046;
 
-            /*background: url("https://picsum.photos/1920/1080?random") no-repeat center fixed;*/
+            background-image: url("img/bg_1.png");
             background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
 
             height: 100vh;
         }
@@ -154,16 +161,26 @@
             </a>
             <h3>Menu</h3>
             <div class="grid">
-                <div><button onClick="toggleModal(event)" data-target="modal-example"
-                        class="secondary outline">Home</button></div>
-                <div><button onClick="toggleModal(event)" data-target="modal-example"
-                        class="secondary outline">Caratteristiche</button></div>
-                <div><button onClick="toggleModal(event)" data-target="modal-example"
-                        class="secondary outline">Installazione</button></div>
-                <div><button onClick="toggleModal(event)" data-target="modal-example"
-                        class="secondary outline">Esempi</button></div>
-                <div><button onClick="toggleModal(event)" data-target="modal-example"
-                        class="secondary outline">Contatti</button></div>
+                <div>
+                    <button onClick="toggleModal(event)" href="#intro" data-target="modal-example"
+                        class="secondary outline">Home</button>
+                </div>
+                <div>
+                    <button onClick="toggleModal(event)" href="#features" data-target="modal-example"
+                        class="secondary outline">Caratteristiche</button>
+                </div>
+                <div>
+                    <button onClick="toggleModal(event)" href="#installation" data-target="modal-example"
+                        class="secondary outline">Installazione</button>
+                </div>
+                <div>
+                    <button onClick="toggleModal(event)" href="#examples" data-target="modal-example"
+                        class="secondary outline">Esempi</button>
+                </div>
+                <div>
+                    <button onClick="toggleModal(event)" href="#contact" data-target="modal-example"
+                        class="secondary outline">Contatti</button>
+                </div>
             </div>
             <footer>
                 <small>
@@ -174,7 +191,7 @@
     </dialog>
 
     <!-- Hero -->
-    <header id="intro" class="hero" data-theme="dark"><br><br><br><br><br><br><br><br> <!-- TEST -->
+    <header id="intro" class="hero">
         <!-- NavBar -->
         <nav id="navbar" class="nav container-fluid">
             <ul>
@@ -250,7 +267,7 @@
                     .then(async blob => {
                         var urlCreator = window.URL || window.webkitURL;
                         var imageUrl = urlCreator.createObjectURL(blob);
-                        document.querySelector("#intro").style.background = `url(${imageUrl})`;
+                        document.querySelector("#intro").style.backgroundImage = `url(${imageUrl})`;
 
                         const colorThief = new ColorThief();
                         let img = document.createElement('img');
@@ -264,20 +281,36 @@
                             console.log(hexColor);
 
                             document.documentElement.style.setProperty('--your-variable', '#YOURCOLOR');
-                            document.querySelector("#intro > header").style.color = hexColor;
+                            document.querySelector("#intro > div > article").style.backgroundColor = hexColor;
                         }
                         img.src = imageUrl;
                     });
             }
-            loadBg();
+            //loadBg();
         </script>
-        <header class="container">
-            <hgroup>
-                <h1>Semplificando l'Accesso alle Mappe Catastali</h1>
-                <h2>Scopri come il nostro script rende facile l'accesso alle mappe catastali su PUC.</h2>
-            </hgroup>
-            <p><a href="#features" role="button" onclick="event.preventDefault()">Scopri di più</a></p>
-        </header>
+        <div class="container"><br><br><br><br><br><br> <!-- TEST -->
+            <article>
+                <div class="grid">
+                    <div>
+                        <hgroup>
+                            <h1>Semplificando l'Accesso alle Mappe Catastali</h1>
+                            <h2>Scopri come il nostro script rende facile l'accesso alle mappe catastali su PUC.</h2>
+                        </hgroup>
+                        <a href="#features" role="button" onclick="event.preventDefault()">Scopri di più</a>
+                    </div>
+                    <div>
+                        <figure style="transform: perspective(400px) rotate3d(1, -1, 0, 8deg) scale(.9); box-shadow: 0 0 10px 0px var(--contrast); border-radius: 10px;">
+                            <img src="img/bg.png" alt="Architecture" />
+                            <!--<figcaption>
+                                Image from
+                                <a href="https://unsplash.com/photos/3Ijt7UkSBYE" target="_blank">unsplash.com</a>
+                            </figcaption>-->
+                        </figure>
+                    </div>
+                </div>
+            </article>
+        </div>
+
     </header>
 
     <!-- Main -->
@@ -390,6 +423,8 @@
                             aria-label="First name" required />
                         <input type="email" id="email" name="email" placeholder="Email address"
                             aria-label="Email address" required />
+                        <textarea id="body" name="body" placeholder="Body" rows="4" cols="50"
+                            style="resize: none;"></textarea>
                         <button type="submit" onclick="event.preventDefault()">Subscribe</button>
                     </form>
                 </article>
