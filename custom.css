@@ -2,7 +2,6 @@
 :root {
   --spacing-company: 3rem;
   --font-weight: 400;
-  --border-radius: 0;
 }
 
 /* Typography */
@@ -14,20 +13,6 @@ hgroup> :last-child {
 
 small {
   color: var(--muted-color);
-}
-
-/* Header */
-.hero {
-  background-color: #394046;
-
-  background: url("https://picsum.photos/1920/1080?random") no-repeat center fixed;
-  background-size: cover;
-
-  height: 100vh;
-}
-
-header {
-  padding: var(--spacing-company) 0;
 }
 
 header hgroup> :last-child {
