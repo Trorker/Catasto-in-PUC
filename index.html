@@ -168,10 +168,9 @@
 <body>
     <!-- Modal -->
     <dialog id="modal-example">
-        <article style="min-width: 80%;">
-            <a href="#close" aria-label="Close" class="close" data-target="modal-example" onClick="toggleModal(event)">
-            </a>
-            <h3>Menu</h3>
+        <article style="min-width: 90%;">
+            <a href="#close" aria-label="Close" class="close" data-target="modal-example"
+                onClick="toggleModal(event)"></a>
             <div class="grid">
                 <div>
                     <button onClick="toggleModal(event)" href="#intro" data-target="modal-example"
@@ -308,7 +307,8 @@
                             <h1>Semplificando l'Accesso alle Mappe Catastali</h1>
                             <h2>Scopri come il nostro script rende facile l'accesso alle mappe catastali su PUC.</h2>
                         </hgroup>
-                        <a href="#features" class="animate__animated animate__pulse" role="button" onclick="event.preventDefault()">Scopri di più</a>
+                        <a href="#features" class="animate__animated animate__pulse" role="button"
+                            onclick="event.preventDefault()">Scopri di più</a>
                     </div>
                     <div>
                         <figure
@@ -428,17 +428,15 @@
             <div class="container">
                 <article>
                     <hgroup>
-                        <h2>Subscribe</h2>
+                        <h2>Invia l'email</h2>
                         <h3>Litora torquent per conubia nostra</h3>
                     </hgroup>
-                    <form class="grid">
+                    <form>
                         <input type="text" id="firstname" name="firstname" placeholder="First name"
                             aria-label="First name" required />
-                        <input type="email" id="email" name="email" placeholder="Email address"
-                            aria-label="Email address" required />
                         <textarea id="body" name="body" placeholder="Body" rows="4" cols="50"
                             style="resize: none;"></textarea>
-                        <button type="submit" onclick="event.preventDefault()">Subscribe</button>
+                        <button type="submit" onclick="event.preventDefault()">Invia</button>
                     </form>
                 </article>
             </div>
