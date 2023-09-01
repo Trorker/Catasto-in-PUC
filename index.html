@@ -27,6 +27,9 @@
     <!-- COLOR THIEF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
+    <!-- https://animate.style/ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -95,7 +98,7 @@
             -webkit-backdrop-filter: blur(4px);
             border-radius: 10px;
             border: 1px solid rgba(255, 255, 255, 0.18);
-            background-color: color-mix(in srgb, var(--background-color), transparent 75%);
+            background-color: color-mix(in srgb, var(--background-color), transparent 50%);
         }
 
         nav .responsive_nav {
@@ -305,10 +308,11 @@
                             <h1>Semplificando l'Accesso alle Mappe Catastali</h1>
                             <h2>Scopri come il nostro script rende facile l'accesso alle mappe catastali su PUC.</h2>
                         </hgroup>
-                        <a href="#features" role="button" onclick="event.preventDefault()">Scopri di più</a>
+                        <a href="#features" class="animate__animated animate__pulse" role="button" onclick="event.preventDefault()">Scopri di più</a>
                     </div>
                     <div>
-                        <figure style="transform: perspective(400px) rotate3d(1, -1, 0, 8deg) scale(.9); box-shadow: 0 0 10px 0px var(--contrast); border-radius: 10px;">
+                        <figure
+                            style="transform: perspective(400px) rotate3d(1, -1, 0, 8deg) scale(.9); box-shadow: 0 0 10px 0px var(--contrast); border-radius: 10px;">
                             <img src="img/bg.png" alt="Architecture" />
                             <!--<figcaption>
                                 Image from
