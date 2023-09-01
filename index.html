@@ -62,6 +62,10 @@
             background-position: center;
         }
 
+        body {
+            overflow-x: hidden;
+        }
+
         nav.nav {
             /*background-color: var(--background-color);*/
 
@@ -161,6 +165,16 @@
 
         form.grid {
             grid-row-gap: 0;
+        }
+
+        .figure-img {
+            transform: perspective(400px) rotate3d(1, -1, 0, 8deg) scale(.9);
+            box-shadow: 0 0 10px 0px var(--contrast);
+            border-radius: 10px;
+        }
+
+        .figure-img:hover {
+            transform: perspective(400px) rotate3d(1, -1, 0, 5deg) scale(.9);
         }
     </style>
 </head>
@@ -299,7 +313,7 @@
             }
             //loadBg();
         </script>
-        <div class="container"><br><br><br><br><br><br> <!-- TEST -->
+        <div class="container"><br><br> <!-- TEST -->
             <article class="glass">
                 <div class="grid">
                     <div>
@@ -307,12 +321,11 @@
                             <h1>Semplificando l'Accesso alle Mappe Catastali</h1>
                             <h2>Scopri come il nostro script rende facile l'accesso alle mappe catastali su PUC.</h2>
                         </hgroup>
-                        <a href="#features" class="animate__animated animate__pulse" role="button"
-                            onclick="event.preventDefault()">Scopri di più</a>
+                        <a href="#installation" class="animate__animated animate__pulse" role="button">Installa</a>
+                        <a href="#features">Scopri di più</a>
                     </div>
                     <div>
-                        <figure
-                            style="transform: perspective(400px) rotate3d(1, -1, 0, 8deg) scale(.9); box-shadow: 0 0 10px 0px var(--contrast); border-radius: 10px;">
+                        <figure class="figure-img">
                             <img src="img/bg.png" alt="Architecture" />
                             <!--<figcaption>
                                 Image from
@@ -334,6 +347,12 @@
                 di e-distribuzione. Lo script consente di visualizzare e consultare le mappe catastali direttamente
                 dalla piattaforma PUC, eliminando la necessità di passare a diverse applicazioni o siti web per accedere
                 a queste importanti informazioni.</p>
+            <blockquote>
+                "La tecnologia, quando è ben concepita e ben implementata, semplifica la vita."
+                <footer>
+                    <cite>- Jeff Bezos</cite>
+                </footer>
+            </blockquote>
         </section>
 
         <section id="how-it-works">
@@ -434,10 +453,9 @@
                         porta tellus mollis vel. Nam consequat arcu ac tellus porta, nec egestas orci sodales.
                     </p>
                     <blockquote>
-                        "Maecenas vehicula metus tellus, vitae congue turpis hendrerit non.
-                        Nam at dui sit amet ipsum cursus ornare."
+                        "La tecnologia, quando è ben concepita e ben implementata, semplifica la vita."
                         <footer>
-                            <cite>- Phasellus eget lacinia</cite>
+                            <cite>- Jeff Bezos</cite>
                         </footer>
                     </blockquote>
                 </section>
@@ -531,6 +549,41 @@
                 </details>
             </div>
         </section>
+
+        <section id="for-the-curious" class="py-4">
+            <div class="container">
+                <h2 class="h2">Per i più Curiosi: Come Funziona lo Script</h2>
+                <p>
+                    Se sei interessato a capire in dettaglio come lo script per le mappe catastali PUC funziona sotto il
+                    cofano, sei nel posto giusto. In questa sezione, spiegheremo il funzionamento dello script passo
+                    dopo passo.
+                </p>
+                <ol class="detailed-explanation">
+                    <li>
+                        <h3 class="h3">Utilizzo della Libreria Leaflet JS</h3>
+                        <p>
+                            Lo script sfrutta la potente libreria JavaScript chiamata Leaflet. Questa libreria è
+                            ampiamente utilizzata per la creazione di mappe interattive. In particolare, lavoriamo con
+                            la variabile della mappa Leaflet utilizzata nel sistema PUC.
+                        </p>
+                    </li>
+                    <li>
+                        <h3 class="h3">Aggiunta del Layer delle Mappe Catastali</h3>
+                        <p>
+                            La magia dello script sta nell'aggiungere un layer aggiuntivo alla mappa esistente. Questo
+                            layer contiene le mappe catastali che preleviamo direttamente dal sito delle agenzie
+                            dell'ente.
+                        </p>
+                    </li>
+                </ol>
+                <p>
+                    In poche parole, lo script estende la funzionalità della mappa PUC esistente, consentendo agli
+                    utenti di accedere direttamente alle mappe catastali senza dover uscire dall'ambiente familiare di
+                    PUC. È un processo trasparente e sicuro che migliora notevolmente l'esperienza utente.
+                </p>
+            </div>
+        </section>
+
 
         <section id="feedback">
             <div class="container">
