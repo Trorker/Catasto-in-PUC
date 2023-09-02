@@ -187,5 +187,5 @@ main article {
 
 main > section {
     padding-top: calc(2 * var(--block-spacing-vertical));
-    height: 100vh;
+    /*height: 100vh;*/
 }
