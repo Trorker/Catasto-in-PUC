@@ -53,15 +53,25 @@ input[theme-switcher]:checked::before {
 }
 
 /* Responsive */
-.m-hide {
+.s-hide, .m-hide {
     display: none;
 }
 
-.m-show {
+.s-show, .m-show {
     display: block;
 }
 
 @media (min-width: 768px) {
+    .s-hide {
+        display: block;
+    }
+
+    .s-show {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
     .m-hide {
         display: block;
     }
@@ -135,8 +145,12 @@ nav#navbar.sticky {
 }
 
 /* Main */
-main > section {
+main > section{
     padding-top: calc(2 * var(--block-spacing-vertical));
+}
+
+header > section {
+    padding-top: calc(1 * var(--block-spacing-vertical));
 }
 
 main article {
