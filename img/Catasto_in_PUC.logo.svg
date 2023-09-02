@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <title>Particelle</title>
+    <ellipse style="fill: rgb(253, 235, 189); stroke-width: 2px;" cx="125" cy="125" rx="125" ry="125"/>
+    <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 0.5px; stroke-opacity: 0.5;" d="M 143.735 201.201 L 121.235 249.857"/>
+    <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 0.5px; stroke-opacity: 0.5; transform-box: fill-box; transform-origin: 50% 50%;" d="M 207.027 27.852 L 110.79 159.361" transform="matrix(0.973055, -0.230573, 0.230573, 0.973055, 0.000001, 0.000007)"/>
+    <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 0.5px; stroke-opacity: 0.5; transform-origin: 96.52px 63.723px;" d="M 136.653 7.994 L 47.619 129.96" transform="matrix(0.973055, -0.230573, 0.230573, 0.973055, 0, 0)"/>
+    <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 0.5px; stroke-opacity: 0.5; transform-origin: 162.937px 84.935px;" d="M 242.328 168.215 L 145.952 124.122"/>
+  </g>
+  <g>
+    <title>Strade</title>
+    <path style="stroke: rgb(0, 0, 0); fill: rgb(150, 150, 150); stroke-width: 0.5px;" d="M 1.151 136.622 L 198.014 226.119 C 198.318 226.524 211.461 215.738 211.123 215.175 L 0.564 118.962 C -0.198 118.962 -0.13 136.622 1.151 136.622 Z"/>
+  </g>
+  <g>
+    <title>Acque</title>
+    <path style="stroke: rgb(0, 0, 0); fill: rgb(14, 202, 241); stroke-width: 0.5px;" d="M 0.267 118.796 L 211.128 215.198 C 211.432 215.603 216.694 210.296 216.356 209.733 L 1.068 110.425 C 0.741 110.562 0.294 118.727 0.267 118.796 Z"/>
+  </g>
+  <g>
+    <title>Fabbricati</title>
+    <rect x="172.619" y="100.429" width="42.468" height="20.038" style="stroke: rgb(0, 0, 0); fill: rgb(235, 127, 19); stroke-width: 0.5px; transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.908486, 0.417915, -0.417915, 0.908486, -5.386095, 21.243715)"/>
+    <rect x="192.823" y="224.536" width="47.439" height="44.8" style="stroke: rgb(0, 0, 0); fill: rgb(235, 127, 19); stroke-width: 0.5px; transform-origin: 216.543px 246.936px;" transform="matrix(0.908486, 0.417915, -0.417915, 0.908486, -119.903188, -33.989971)"/>
+    <rect x="43.005" y="50.078" width="10.58" height="9.992" style="stroke: rgb(0, 0, 0); fill: rgb(235, 127, 19); stroke-width: 0.5px; transform-origin: 48.295px 55.073px;" transform="matrix(0.908486, 0.417915, -0.417915, 0.908486, 22.886013, 127.135788)"/>
+    <path style="stroke: rgb(0, 0, 0); stroke-width: 0.5px; fill: rgb(235, 127, 19); transform-box: fill-box; transform-origin: 50% 50%;" d="M 85.799 87.698 L 100.334 54.821 L 135.017 68.866 L 126.759 88.336 L 140.302 94.401 L 134.686 108.126 L 85.799 87.698 Z" transform="matrix(0.021976, -0.999758, 0.999758, 0.021976, 0.000006, 0.000022)"/>
+    <path style="stroke: rgb(0, 0, 0); fill: rgb(235, 127, 19); stroke-width: 0.5px; transform-box: fill-box; transform-origin: 50% 50%;" d="M 52.597 133.052 L 20.991 119.348 L 38.061 80.717 L 57.526 88.903 L 64.414 74.528 L 76.093 79.32 L 63.815 106.571 L 51.537 101.48 L 46.146 114.657 L 58.425 120.047 L 52.597 133.052 Z" transform="matrix(-0.003667, -0.999993, 0.999993, -0.003667, -0.000001, 0.000003)"/>
+  </g>
+  <g>
+    <title>Media</title>
+    <g transform="matrix(1, 0, 0, 1, -6.836215, -26.101912)" style="">
+      <ellipse style="fill: none; stroke: rgb(50, 48, 245);" cx="163.247" cy="154.248" rx="7.053" ry="7.053"/>
+      <path d="M 163.153 148.765 L 167.696 157.852 L 158.609 157.852 L 163.153 148.765 Z" style="fill: rgb(50, 48, 245);"/>
+    </g>
+    <g style="">
+      <path style="fill: none; stroke: rgb(50, 48, 245); stroke-dasharray: 2; stroke-width: 1.5px;" d="M 156.317 135.322 L 147.305 191.41 L 205.879 218.583"/>
+      <path style="fill: none; stroke: rgb(50, 48, 245); stroke-dasharray: 2; stroke-width: 1.5px;" d="M 151.502 134.027 L 142.179 193.533 L 172.165 207.655 L 155.852 245.41"/>
+      <path style="fill: none; stroke: rgb(50, 48, 245); stroke-dasharray: 2; stroke-width: 1.5px;" d="M 159.969 244.183 L 175.816 209.225 L 203.161 222.104"/>
+      <ellipse style="fill: rgb(50, 48, 245); transform-box: fill-box; transform-origin: 50% 50%; stroke-width: 1.5px;" cx="168.282" cy="205.684" rx="1.375" ry="1.422" transform="matrix(0.999859, 0.01679, -0.01679, 0.999859, -1.910076, -0.835497)"/>
+    </g>
+  </g>
+  <g>
+    <title>Bassa</title>
+    <path style="stroke: rgb(53, 188, 107); stroke-dasharray: 2; fill: none;" d="M 148.89 128.249 L 132.577 166.065 L 105.163 153.475 L 49.259 128.398 L 50.565 125.51 L 39.619 120.867"/>
+    <path style="fill: rgb(216, 216, 216); stroke: rgb(53, 188, 107); stroke-dasharray: 1, 2, 1;" d="M 105.647 153.55 L 117.401 108.594"/>
+    <ellipse style="fill: rgb(53, 188, 107);" cx="105.84" cy="153.607" rx="1.21" ry="1.21"/>
+    <path d="M 91.748 117.286 H 92.637 V 119.064 H 94.415 V 119.953 H 92.637 V 121.731 H 91.748 V 119.953 H 89.97 V 119.064 H 91.748 Z" style="fill: rgb(53, 188, 107); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 25.042214, -11.409909)"/>
+    <path d="M 91.748 117.286 H 92.637 V 119.064 H 94.415 V 119.953 H 92.637 V 121.731 H 91.748 V 119.953 H 89.97 V 119.064 H 91.748 Z" style="fill: rgb(53, 188, 107); transform-origin: 92.193px 119.509px;" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, -53.287511, 1.579993)"/>
+    <path style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 0.5px; stroke-opacity: 0.75; stroke-dasharray: 1;" d="M 38.946 120.972 L 39.803 109.84"/>
+    <ellipse style="fill-opacity: 0.75;" cx="39.761" cy="110.003" rx="0.673" ry="0.673"/>
+    <path d="M 41.594 108.851 L 41.648 108.592 L 42.592 108.592 L 42.55 108.791 Q 42.46 108.863 42.352 109.008 Q 42.243 109.153 42.151 109.333 Q 42.059 109.512 42 109.673 Q 41.919 109.896 41.9 110.004 L 41.633 110.004 Q 41.651 109.897 41.716 109.709 Q 41.796 109.479 41.916 109.264 Q 42.036 109.049 42.206 108.851 Z M 42.623 109.594 L 42.896 109.569 Q 42.895 109.589 42.895 109.599 Q 42.895 109.698 42.939 109.748 Q 42.984 109.798 43.055 109.798 Q 43.155 109.798 43.236 109.703 Q 43.318 109.608 43.318 109.44 Q 43.318 109.34 43.272 109.289 Q 43.226 109.238 43.15 109.238 Q 43.095 109.238 43.044 109.264 Q 42.992 109.289 42.945 109.341 L 42.714 109.323 L 42.932 108.592 L 43.652 108.592 L 43.599 108.848 L 43.123 108.848 L 43.058 109.068 Q 43.099 109.05 43.14 109.041 Q 43.181 109.031 43.221 109.031 Q 43.385 109.031 43.491 109.142 Q 43.596 109.252 43.596 109.438 Q 43.596 109.586 43.522 109.73 Q 43.449 109.874 43.318 109.951 Q 43.187 110.028 43.043 110.028 Q 42.861 110.028 42.743 109.91 Q 42.625 109.792 42.623 109.594 Z" style="fill: rgb(51, 51, 51);"/>
+  </g>
+  <g>
+    <title>In Costruzione</title>
+    <path style="fill: none; stroke: rgb(173, 77, 75); stroke-dasharray: 2;" d="M 150.161 131.793 L 126.582 192.829"/>
+    <g style="transform-origin: 129.186px 198.702px;" transform="matrix(0.914436, 0.40473, -0.40473, 0.914436, -3.537283, -4.126804)">
+      <rect x="127.252" y="196.813" width="3.868" height="3.868" style="fill: none; stroke-width: 0.5px; stroke: rgb(173, 77, 75);"/>
+      <path style="fill: rgb(216, 216, 216); stroke-width: 0.5px; stroke: rgb(173, 77, 75);" d="M 129.165 196.722 L 129.165 200.586"/>
+    </g>
+    <path style="fill: none; stroke: rgb(173, 77, 75); stroke-dasharray: 2;" d="M 123.394 193.739 L 116.772 190.736"/>
+    <path d="M 91.748 117.286 H 92.637 V 119.064 H 94.415 V 119.953 H 92.637 V 121.731 H 91.748 V 119.953 H 89.97 V 119.064 H 91.748 Z" style="fill: rgb(173, 77, 75); transform-origin: 92.193px 119.509px;" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 24.586823, 71.98052)"/>
+  </g>
+  <ellipse style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 3px;" cx="125" cy="125" rx="124" ry="124"/>
+</svg>
