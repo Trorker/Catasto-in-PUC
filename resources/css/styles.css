@@ -19,11 +19,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Iocn */
-[class^="icon-"] {
-    display: inline-flex;
-}
-
 /* Material-symbols */
 .material-symbols-outlined {
     font-variation-settings:
@@ -178,7 +173,6 @@ header section {
 main article {
     margin-top: 0;
     margin-bottom: calc(var(--block-spacing-vertical) / 2);
-    ;
 }
 
 .glass {
@@ -206,11 +200,6 @@ main article {
 
 #features article .material-symbols-outlined {
     font-size: calc(var(--font-size) * 3);
-}
-
-main>section {
-    padding-top: calc(2 * var(--block-spacing-vertical));
-    /*height: 100vh;*/
 }
 
 a {
@@ -245,4 +234,9 @@ footer ul.list-link li {
 footer ul.list-icon li {
     list-style: none;
     margin: 0.3em;
+}
+
+/* Iocn */
+[class^="icon-"] {
+    display: inline-flex;
 }
