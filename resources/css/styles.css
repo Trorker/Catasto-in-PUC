@@ -53,12 +53,26 @@ input[theme-switcher]:checked::before {
 }
 
 /* Responsive */
-.s-hide, .m-hide {
+.s-hide,
+.m-hide {
     display: none;
 }
 
-.s-show, .m-show {
+.s-show,
+.m-show {
     display: block;
+}
+
+@media (min-width: 576px) {
+    .xs-grid {
+        grid-template-columns: repeat(auto-fit, minmax(0%, 1fr));
+    }
+}
+
+@media (min-width: 576px) {
+    .s-grid {
+        grid-template-columns: repeat(auto-fit, minmax(0%, 1fr));
+    }
 }
 
 @media (min-width: 768px) {
@@ -145,17 +159,18 @@ nav#navbar.sticky {
 }
 
 /* Main */
-main > section{
+main>section {
     padding-top: calc(2 * var(--block-spacing-vertical));
 }
 
-header > section {
+header>section {
     padding-top: calc(1 * var(--block-spacing-vertical));
 }
 
 main article {
     margin-top: 0;
-    margin-bottom: calc(var(--block-spacing-vertical) / 2);;
+    margin-bottom: calc(var(--block-spacing-vertical) / 2);
+    ;
 }
 
 .glass {
@@ -163,8 +178,8 @@ main article {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 10px;
-    border: 1px solid color-mix(in srgb, var(--muted-border-color), transparent 18%);
-    background-color: color-mix(in srgb, var(--background-color), transparent 80%);
+    /*border: 1px solid color-mix(in srgb, var(--muted-border-color), transparent 18%);*/
+    background-color: color-mix(in srgb, var(--background-color), transparent 50%);
 }
 
 .figure-img {
@@ -173,7 +188,7 @@ main article {
     border-radius: 10px;
 }
 
-#features {
+.text-center {
     text-align: center;
 }
 
@@ -185,7 +200,22 @@ main article {
     font-size: calc(var(--font-size) * 3);
 }
 
-main > section {
+main>section {
     padding-top: calc(2 * var(--block-spacing-vertical));
     /*height: 100vh;*/
+}
+
+a {
+    background-color: transparent;
+    /* Rimuove sfondo dai link */
+}
+
+footer {
+    background-color: var(--card-background-color);
+    box-shadow: var(--card-box-shadow);
+}
+
+.w-full {
+    width: 100%;
+    display: block;
 }
