@@ -159,12 +159,15 @@ nav#navbar.sticky {
 }
 
 /* Main */
-main>section {
+main section {
     padding-top: calc(2 * var(--block-spacing-vertical));
 }
 
-header>section {
-    padding-top: calc(1 * var(--block-spacing-vertical));
+header section {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    left: 0;
 }
 
 main article {
