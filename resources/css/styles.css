@@ -19,6 +19,11 @@ body {
     overflow-x: hidden;
 }
 
+/* Iocn */
+[class^="icon-"] {
+    display: inline-flex;
+}
+
 /* Material-symbols */
 .material-symbols-outlined {
     font-variation-settings:
