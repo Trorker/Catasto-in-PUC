@@ -220,5 +220,24 @@ footer {
 
 .w-full {
     width: 100%;
-    display: block;
+}
+
+footer ul.list-link {
+    padding: 0;
+}
+
+footer ul.list-icon {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul.list-link li {
+    list-style: none;
+    margin: 0;
+}
+
+footer ul.list-icon li {
+    list-style: none;
+    margin: 0.3em;
 }
