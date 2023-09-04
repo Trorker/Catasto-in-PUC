@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,11 +12,12 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
+            
+            text-align: center;
         }
 
         .column {
-            flex: 1;
-            min-width: 200px;
+            /*flex: 1;*/
             padding: 20px;
             border: 1px solid #ccc;
             margin: 10px;
@@ -23,7 +25,8 @@
 
         /* Stili per la prima colonna */
         .main-column {
-            flex: 3; /* La prima colonna occupa 3/4 dello spazio disponibile */
+            /*flex: 3;*/
+            /* La prima colonna occupa 3/4 dello spazio disponibile */
         }
 
         /* Stili per la seconda riga */
@@ -32,18 +35,30 @@
             justify-content: center;
             align-items: center;
             flex: 1;
+
+            text-wrap: nowrap;
         }
 
         /* Stili per le colonne nella seconda riga */
         .second-column {
             flex: 1;
-            min-width: 200px;
             padding: 20px;
             border: 1px solid #ccc;
             margin: 10px;
         }
+
+        /* Media query per attivare il wrap completo in quattro righe quando necessario */
+        @media screen and (max-width: 800px) {
+            .second-row {
+                flex-wrap: wrap;
+            }
+            .container {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="column main-column">
@@ -66,4 +81,5 @@
         </div>
     </div>
 </body>
+
 </html>
