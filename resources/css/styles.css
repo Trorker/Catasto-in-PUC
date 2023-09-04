@@ -206,7 +206,7 @@ a {
     /* Rimuove sfondo dai link */
 }
 
-footer {
+body>footer {
     background-color: var(--card-background-color);
     box-shadow: var(--card-box-shadow);
 }
@@ -219,22 +219,22 @@ footer {
     height: 100vh;
 }
 
-footer ul.list-link {
+body>footer ul.list-link {
     padding: 0;
 }
 
-footer ul.list-icon {
+body>footer ul.list-icon {
     padding: 0;
     display: flex;
     justify-content: center;
 }
 
-footer ul.list-link li {
+body>footer ul.list-link li {
     list-style: none;
     margin: 0;
 }
 
-footer ul.list-icon li {
+body>footer ul.list-icon li {
     list-style: none;
     margin: 0.3em;
 }
