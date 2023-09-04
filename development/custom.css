@@ -1,0 +1,33 @@
+/* Global CSS variables */
+:root {
+  --spacing-company: 3rem;
+  --font-weight: 400;
+  /*--primary: #43a047;*/
+}
+
+/* Typography */
+h2,
+h3,
+hgroup> :last-child {
+  font-weight: 200;
+}
+
+header hgroup {
+  margin-bottom: var(--spacing-company);
+}
+
+/* Nav */
+summary[role="link"].contrast:is([aria-current], :hover, :active, :focus) {
+  background-color: transparent;
+  color: var(--contrast-hover);
+}
+
+/* Aside nav */
+aside img {
+  margin-bottom: 0.25rem;
+}
+
+aside p {
+  margin-bottom: var(--spacing-company);
+  line-height: 1.25;
+}
