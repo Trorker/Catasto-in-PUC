@@ -197,9 +197,6 @@ a {
 body>footer {
     background-color: var(--card-background-color);
     box-shadow: var(--card-box-shadow);
-
-    /*text-wrap: nowrap;*/
-    white-space: nowrap;
 }
 
 .w-full {
@@ -251,6 +248,13 @@ body>footer ul.list-icon li {
     justify-content: space-around;
     flex-wrap: wrap;
     flex-basis: 0;
+
+    /*text-wrap: nowrap;*/
+    white-space: nowrap;
+}
+
+.flex>div {
+    flex: 1;
 }
 
 @media (max-width: 768px) {
