@@ -141,7 +141,6 @@ nav#navbar.sticky {
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 100vh;
 
     position: relative;
 
@@ -214,6 +213,10 @@ footer {
 
 .w-full {
     width: 100%;
+}
+
+.h-screen {
+    height: 100vh;
 }
 
 footer ul.list-link {
