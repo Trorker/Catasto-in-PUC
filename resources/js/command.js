@@ -26,6 +26,9 @@ const SmoothScrolling = () => {
                     top: targetElement.offsetTop,
                     behavior: "smooth"
                 });
+
+                // Aggiungi l'hash all'URL dopo lo smooth scrolling
+                history.pushState(null, null, "#" + targetId);
             }
         });
     });
