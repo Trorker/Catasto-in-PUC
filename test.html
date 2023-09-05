@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caricamento Template HTML Esterno</title>
+    <meta name="description" content="Semplifica l'accesso alle Mappe Catastali">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Catasto in PUC">
+    <meta property="og:description" content="Semplifica l'accesso alle Mappe Catastali">
+    <meta property="og:url" content="https://trorker.github.io/Catasto-in-PUC/">
+    <meta property="og:image" content="https://trorker.github.io/Catasto-in-PUC/resources/img/favicon.png">
+
+    <meta name="keywords" content="XYZ" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="shortcut icon" href="resources/img/favicon.png">
+
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="resources/css/pico.min.css" />
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="resources/css/styles.css" />
+
+    <!-- Alphine JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- https://feathericons.com/?query=lin -->
+    <!-- https://basicons.xyz/ -->
+
+    <!-- Material-symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+<body x-data="{ loadedContent: '' }">
+    <div x-html="loadedContent"></div>
+
+    <script>
+        // Utilizza JavaScript nativo o Axios per caricare il template esterno
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                // Assegna il contenuto al div
+                Alpine.data('loadedContent', data);
+            })
+            .catch(error => {
+                console.error('Errore nel caricamento del template: ', error);
+            });
+    </script>
+</body>
+</html>
+
+
+
