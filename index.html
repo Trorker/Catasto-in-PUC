@@ -38,69 +38,71 @@
     <header id="hero" class="noselect h-screen">
 
         <!-- NavBar -->
-        <dialog id="navbar-modal">
-            <article>
-                <a href="#close" aria-label="Close" class="close" data-target="navbar-modal"
-                    onClick="toggleModal(event)"></a>
-                <main>
-                    <a href="#hero" role="button" class="secondary outline" data-target="navbar-modal"
-                        onclick="toggleModal(event, false)">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-home">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                    </a>
-                    <a href="#intro" role="button" class="secondary outline" data-target="navbar-modal"
-                        onclick="toggleModal(event, false)">Introduzione</a>
-                    <a href="#features" role="button" class="secondary outline" data-target="navbar-modal"
-                        onclick="toggleModal(event, false)">Caratteristiche</a>
-                    <a href="#installation" role="button" class="secondary outline" data-target="navbar-modal"
-                        onclick="toggleModal(event, false)">Installazione</a>
-                    <a href="#feedback" role="button" class="secondary outline" data-target="navbar-modal"
-                        onclick="toggleModal(event, false)">Feedback</a>
-                </main>
-                <footer>
-                    <small>
-                        Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
-                    </small>
-                </footer>
-            </article>
-        </dialog>
-        <nav id="navbar" class="container-fluid">
-            <ul>
-                <li>
-                    <a href="#hero" class="contrast">
-                        <kbd><small>Catasto in PUC</small></kbd>
-                    </a>
-                </li>
-            </ul>
-            <ul class="s-hide">
-                <li><a href="#intro">Introduzione</a></li>
-                <li><a href="#features">Caratteristiche</a></li>
-                <li><a href="#installation">Installazione</a></li>
-                <li><a href="#feedback">Feedback</a></li>
-            </ul>
-            <ul>
-                <!--<li>
+        <div>
+            <dialog id="navbar-modal">
+                <article>
+                    <a href="#close" aria-label="Close" class="close" data-target="navbar-modal"
+                        onClick="toggleModal(event)"></a>
+                    <main>
+                        <a href="#hero" role="button" class="secondary outline" data-target="navbar-modal"
+                            onclick="toggleModal(event, false)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-home">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#intro" role="button" class="secondary outline" data-target="navbar-modal"
+                            onclick="toggleModal(event, false)">Introduzione</a>
+                        <a href="#features" role="button" class="secondary outline" data-target="navbar-modal"
+                            onclick="toggleModal(event, false)">Caratteristiche</a>
+                        <a href="#installation" role="button" class="secondary outline" data-target="navbar-modal"
+                            onclick="toggleModal(event, false)">Installazione</a>
+                        <a href="#feedback" role="button" class="secondary outline" data-target="navbar-modal"
+                            onclick="toggleModal(event, false)">Feedback</a>
+                    </main>
+                    <footer>
+                        <small>
+                            Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
+                        </small>
+                    </footer>
+                </article>
+            </dialog>
+            <nav id="navbar" class="container-fluid">
+                <ul>
+                    <li>
+                        <a href="#hero" class="contrast">
+                            <kbd><small>Catasto in PUC</small></kbd>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="s-hide">
+                    <li><a href="#intro">Introduzione</a></li>
+                    <li><a href="#features">Caratteristiche</a></li>
+                    <li><a href="#installation">Installazione</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                </ul>
+                <ul>
+                    <!--<li>
                     <a href="#" icon-theme-switcher- class="contrast">
                         <span class="icon-moon"></span>
                     </a>
                 </li>-->
-                <li> <!-- <input type="checkbox" theme-switcher role="switch" /> -->
-                    <a href="#" icon-theme-switcher class="contrast">
-                        <span class="material-symbols-outlined">fiber_manual_record</span>
-                    </a>
-                </li>
-                <li class="s-show">
-                    <!-- Button to trigger the modal -->
-                    <a href="#" class="contrast" data-target="navbar-modal" onClick="toggleModal(event)">
-                        <span class="material-symbols-outlined">menu</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+                    <li> <!-- <input type="checkbox" theme-switcher role="switch" /> -->
+                        <a href="#" icon-theme-switcher class="contrast">
+                            <span class="material-symbols-outlined">fiber_manual_record</span>
+                        </a>
+                    </li>
+                    <li class="s-show">
+                        <!-- Button to trigger the modal -->
+                        <a href="#" class="contrast" data-target="navbar-modal" onClick="toggleModal(event)">
+                            <span class="material-symbols-outlined">menu</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
         <section class="container" data-theme="light">
             <article class="glass">
@@ -326,10 +328,10 @@
                 <article>
                     <hgroup>
                         <h2>Condividi il Tuo Feedback</h2>
-                        <h3>Il tuo feedback è importante per noi. Vogliamo assicurarci che lo script per le mappe
+                        <p>Il tuo feedback è importante per noi. Vogliamo assicurarci che lo script per le mappe
                             catastali PUC soddisfi le tue esigenze e risolva i tuoi problemi in modo efficace.
                             Se hai domande, suggerimenti o commenti, per favore, condividili con noi. Siamo qui per
-                            ascoltarti.</h3>
+                            ascoltarti.</p>
                     </hgroup>
                     <form>
                         <input type="text" id="subject" name="subject" placeholder="Oggetto:" aria-label="Oggetto:"
