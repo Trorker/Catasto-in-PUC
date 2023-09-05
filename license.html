@@ -24,6 +24,9 @@
     <!-- Custom styles for this example -->
     <link rel="stylesheet" href="resources/css/styles.css" />
 
+    <!-- Alphine JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <!-- https://feathericons.com/?query=lin -->
     <!-- https://basicons.xyz/ -->
 
@@ -113,10 +116,10 @@
                     </ul>
                 </nav>
             </div>
-            <div class="container">
+            <div class="container" x-data="{ currentYear: `${new Date().getFullYear()}`}">
                 <hgroup>
                     <h3>MIT License</h3>
-                    <p><small>Copyright (c) ${new Date().getFullYear()} ${GM_info.script.author}</small></p>
+                    <p><small>Copyright (c) <span x-text="currentYear">2023</span> Catasto in PUC</small></p>
                 </hgroup>
                 <p style="text-align: justify;">
                     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
@@ -200,10 +203,10 @@
                         <h6>Navigations Links</h6>
                         <small>
                             <ul class="list-link">
-                                <li><a href="#intro">Introduzione</a></li>
-                                <li><a href="#features">Caratteristiche</a></li>
-                                <li><a href="#installation">Installazione</a></li>
-                                <li><a href="#feedback">Feedback</a></li>
+                                <li><a href="/#intro">Introduzione</a></li>
+                                <li><a href="/#features">Caratteristiche</a></li>
+                                <li><a href="/#installation">Installazione</a></li>
+                                <li><a href="/#feedback">Feedback</a></li>
                             </ul>
                         </small>
                     </hgroup>
@@ -241,11 +244,11 @@
                 </div>
             </div>
             <hr>
-            <p class="text-center">
+            <p class="text-center" x-data="{ currentYear: `${new Date().getFullYear()}`}">
                 <small>
                     Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
                     <br>
-                    Copyright © 2023 - All rights reserved
+                    Copyright © <span x-text="currentYear">2023</span> - All rights reserved
                 </small>
             </p>
         </div>
