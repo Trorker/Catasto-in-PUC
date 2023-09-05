@@ -14,9 +14,14 @@
     /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 
+/* Default Settings */
 body {
     scroll-behavior: smooth;
     overflow-x: hidden;
+}
+
+body>main {
+    padding: 0;
 }
 
 /* Material-symbols */
@@ -149,16 +154,20 @@ nav#navbar.sticky {
 
 /* Main */
 main section {
-    padding-top: calc(2 * var(--block-spacing-vertical));
+    /*padding-top: calc(var(--navbar-height) + 1rem);*/
+    padding-top: calc(var(--block-spacing-vertical) + 2rem);
 }
 
-body>main {
-    padding: 0;
-}
+/*body>header:has(nav#navbar.sticky) ~ main > section {
+    padding-top: calc(2 * var(--block-spacing-vertical));
+}*/
 
 body>header section {
     padding-top: calc((20 / 100 * 100vh) - var(--block-spacing-vertical));
     padding-bottom: 0;
+
+    padding: 0;
+    margin: 0;
 
     /*position: absolute;
     top: 20%;
@@ -261,7 +270,7 @@ footer .flex>div {
 }
 
 @media (max-width: 768px) {
-    footer  .flex>:first-child {
+    footer .flex>:first-child {
         flex-basis: 100%;
     }
 }
