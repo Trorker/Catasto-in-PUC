@@ -163,16 +163,10 @@ main section {
 }*/
 
 body>header section {
-    padding-top: calc((20 / 100 * 100vh) - var(--block-spacing-vertical));
-    padding-bottom: 0;
-
-    padding: 0;
-    margin: 0;
-
-    /*position: absolute;
+    position: absolute;
     top: 20%;
     left: 0;
-    right: 0;*/
+    right: 0;
 }
 
 main article {
