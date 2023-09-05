@@ -151,10 +151,12 @@ main section {
 }
 
 header section {
-    position: absolute;
+    /*position: absolute;
     top: 20%;
     right: 0;
-    left: 0;
+    left: 0;*/
+
+    margin-top: calc(0.2 * 100vh);
 }
 
 main article {
