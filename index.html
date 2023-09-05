@@ -24,6 +24,9 @@
     <!-- Custom styles for this example -->
     <link rel="stylesheet" href="resources/css/styles.css" />
 
+    <!-- Alphine JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <!-- https://feathericons.com/?query=lin -->
     <!-- https://basicons.xyz/ -->
 
@@ -97,7 +100,13 @@
                     <li class="s-show">
                         <!-- Button to trigger the modal -->
                         <a href="#" class="contrast" data-target="navbar-modal" onClick="toggleModal(event)">
-                            <span class="material-symbols-outlined">menu</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-menu">
+                                <line x1="3" y1="12" x2="21" y2="12"></line>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <line x1="3" y1="18" x2="21" y2="18"></line>
+                            </svg>
                         </a>
                     </li>
                 </ul>
@@ -446,11 +455,11 @@
                 </div>
             </div>
             <hr>
-            <p class="text-center">
+            <p class="text-center" x-data="{ currentYear: `${new Date().getFullYear()}`}">
                 <small>
                     Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
                     <br>
-                    Copyright © 2023 - All rights reserved
+                    Copyright © <span x-text="currentYear">2023</span> - All rights reserved
                 </small>
             </p>
         </div>
