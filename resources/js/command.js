@@ -1,5 +1,6 @@
 const stickNavbar = () => {
     var navbar = document.getElementById("navbar");
+    //document.documentElement.style.setProperty("--navbar-height", `${navbar.offsetHeight}px`);
     var sticky = navbar.offsetTop;
     (window.scrollY >= sticky) ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
     window.onscroll = () => {
