@@ -36,7 +36,7 @@ const SmoothScrolling = () => {
 }
 
 const feedback = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
 
     var oggetto = document.getElementById("subject").value;
     var messaggio = document.getElementById("body").value;
