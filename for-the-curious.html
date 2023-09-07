@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per i più Curiosi - Catasto in PUC</title>
+    <meta name="description" content="Semplifica l'accesso alle Mappe Catastali">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Catasto in PUC">
+    <meta property="og:description" content="Semplifica l'accesso alle Mappe Catastali">
+    <meta property="og:url" content="https://trorker.github.io/Catasto-in-PUC/">
+    <meta property="og:image" content="https://trorker.github.io/Catasto-in-PUC/resources/img/favicon.png">
+
+    <meta name="keywords" content="XYZ" />
+    <meta name="robots" content="index, follow" />
+
+    <!--<base href="/Catasto-in-PUC/">-->
+
+    <link rel="shortcut icon" href="resources/img/favicon.png">
+
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="resources/css/styles.css" />
+
+    <!-- Alphine JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- https://feathericons.com/?query=lin -->
+    <!-- https://basicons.xyz/ -->
+
+    <!-- Material-symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+
+<body>
+    <!-- NavBar -->
+    <div class="noselect">
+        <dialog id="navbar-modal">
+            <article>
+                <a href="#close" aria-label="Close" class="close" data-target="navbar-modal"
+                    onClick="toggleModal(event)"></a>
+                <main>
+                    <a href="/" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-home">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </a>
+                    <a href="index.html#intro" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">Introduzione</a>
+                    <a href="index.html#features" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">Caratteristiche</a>
+                    <a href="index.html#installation" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">Installazione</a>
+                    <a href="index.html#feedback" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">Feedback</a>
+                </main>
+                <footer>
+                    <small>
+                        Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
+                    </small>
+                </footer>
+            </article>
+        </dialog>
+        <nav id="navbar" class="container-fluid sticky">
+            <ul>
+                <li>
+                    <a href="index.html" class="contrast">
+                        <kbd><small>Catasto in PUC</small></kbd>
+                    </a>
+                </li>
+            </ul>
+            <ul class="s-hide">
+                <li><a href="index.html#intro">Introduzione</a></li>
+                <li><a href="index.html#features">Caratteristiche</a></li>
+                <li><a href="index.html#installation">Installazione</a></li>
+                <li><a href="index.html#feedback">Feedback</a></li>
+            </ul>
+            <ul>
+                <!--<li>
+                    <a href="#" icon-theme-switcher- class="contrast">
+                        <span class="icon-moon"></span>
+                    </a>
+                </li>-->
+                <li> <!-- <input type="checkbox" theme-switcher role="switch" /> -->
+                    <a href="#" icon-theme-switcher class="contrast">
+                        <span class="material-symbols-outlined">fiber_manual_record</span>
+                    </a>
+                </li>
+                <li class="s-show">
+                    <!-- Button to trigger the modal -->
+                    <a href="#" class="contrast" data-target="navbar-modal" onClick="toggleModal(event)">
+                        <span class="material-symbols-outlined">menu</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Page -->
+    <main>
+        <!-- License -->
+        <section id="for-the-curious">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li>Per i più Curiosi</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="container">
+                <hgroup>
+                    <h2>Per i più Curiosi: Come Funziona lo Script</h2>
+                    <p>
+                        Se desideri approfondire il funzionamento dello script per le mappe catastali PUC, sei nel posto
+                        giusto. In questa sezione, esploreremo in dettaglio i passaggi chiave che rendono possibile questa
+                        integrazione.
+                    </p>
+                </hgroup>
+                <ol>
+                    <li>
+                        <h3>Utilizzo della Libreria Leaflet JS</h3>
+                        <p>
+                            Lo script sfrutta la potente libreria JavaScript chiamata <a href="https://leafletjs.com/"
+                                target="_blank">Leaflet</a>. Questa libreria è ampiamente utilizzata per la creazione di
+                            mappe interattive. Nello specifico, interagiamo con la variabile della mappa Leaflet
+                            utilizzata all'interno del sistema PUC.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Aggiunta del Layer delle Mappe Catastali</h3>
+                        <p>
+                            La chiave per il funzionamento dello script sta nell'aggiunta di un layer speciale alla
+                            mappa esistente. Questo layer contiene le mappe catastali prelevate direttamente dal sito
+                            delle agenzie dell'ente.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Integrazione con l'Agenzia delle Entrate</h3>
+                        <p>
+                            Lo script sfrutta i dati geospaziali forniti direttamente <a href="https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search#/home" target="_blank">dall'Agenzia delle Entrate</a>.
+                            Utilizziamo le API e i servizi web forniti dall'ente per prelevare mappe catastali sempre
+                            aggiornate. Questo garantisce che tu abbia accesso a dati affidabili e precisi.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Integrazione senza Interruzioni</h3>
+                        <p>
+                            Quando attivi lo script, noterai un piccolo bottone in alto a destra nell'interfaccia di
+                            PUC. Cliccando su questo bottone, attivi le mappe catastali. Inoltre, puoi visualizzare le
+                            informazioni dettagliate su una qualsiasi area facendo clic su di essa: comparirà un popup
+                            con le coordinate e i dati catastali.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Sicurezza in Locale</h3>
+                        <p>
+                            La tua sicurezza è fondamentale. Lo script opera completamente in locale, sul tuo
+                            dispositivo. Questo significa che tutte le operazioni avvengono direttamente sul tuo
+                            computer, senza alcuna trasmissione di dati a server esterni. Non raccogliamo, memorizziamo
+                            o trasmettiamo informazioni personali o riservate.
+                        </p>
+                    </li>
+                    <li>
+                        <h3>Accesso al Codice Sorgente</h3>
+                        <p>
+                            Siamo orgogliosi di dichiarare che lo script è open source. Ciò significa che il codice
+                            sorgente è disponibile per chiunque desideri esaminarlo, studiarlo e verificarne la
+                            sicurezza. Questa filosofia si basa sulla condivisione e sulla collaborazione per garantire
+                            una solida base di sicurezza.
+                        </p>
+                    </li>
+                </ol>
+                <p>
+                    In sintesi, lo script estende le funzionalità di PUC, semplificando notevolmente l'accesso alle
+                    mappe catastali e migliorando l'esperienza utente. È un potente strumento che opera in modo sicuro,
+                    trasparente e accessibile a tutti.
+                </p>
+                <p>
+                    Siamo aperti a rispondere a qualsiasi altra domanda o dubbio che potresti avere riguardo al
+                    funzionamento dello script. Non vediamo l'ora di condividere con te tutte le potenzialità di questa
+                    incredibile risorsa.
+                </p>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="container-fluid"> <!-- https://alvarotrigo.com/blog/website-footers/ -->
+        <div class="container">
+            <div class="flex text-center">
+                <div>
+                    <p>
+                        <a href="index.html" class="contrast">
+                            <kbd><small>Catasto in PUC</small></kbd>
+                        </a>
+                    </p>
+                    <hgroup>
+                        <h6>Follow Us</h6>
+                        <small>
+                            <ul class="list-icon">
+                                <li>
+                                    <a href="https://github.com/Trorker" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-github">
+                                            <path
+                                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/trorker/" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-instagram">
+                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/ruslan-dzyuba/" target="_blank">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-linkedin">
+                                            <path
+                                                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                            </path>
+                                            <rect x="2" y="9" width="4" height="12"></rect>
+                                            <circle cx="4" cy="4" r="2"></circle>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </small>
+                    </hgroup>
+                </div>
+                <div>
+                    <hgroup>
+                        <h6>Navigations Links</h6>
+                        <small>
+                            <ul class="list-link">
+                                <li><a href="index.html#intro">Introduzione</a></li>
+                                <li><a href="index.html#features">Caratteristiche</a></li>
+                                <li><a href="index.html#installation">Installazione</a></li>
+                                <li><a href="index.html#feedback">Feedback</a></li>
+                            </ul>
+                        </small>
+                    </hgroup>
+                </div>
+                <div>
+                    <hgroup>
+                        <h6>Useful Links</h6>
+                        <small>
+                            <ul class="list-link">
+                                <li>
+                                    <a href="for-the-curious.html">Per i più Curiosi</a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/Trorker/Catasto-in-PUC" target="_blank">GitHub
+                                        Repository</a>
+                                </li>
+                            </ul>
+                        </small>
+                    </hgroup>
+                </div>
+                <div>
+                    <hgroup>
+                        <h6>Support</h6>
+                        <small>
+                            <ul class="list-link">
+                                <!--<li><a href="#">Legal policy</a></li>-->
+                                <!--<li><a href="#">Status policy</a></li>-->
+                                <!--<li><a href="#">Privacy policy</a></li>-->
+                                <!--<li><a href="#">Terms of service</a></li>-->
+                                <li><a href="license.html">Code licensed MIT</a></li>
+                                <!--<li><a href="https://picocss.com/third-party/">Third-Party Tools</a></li>-->
+                            </ul>
+                        </small>
+                    </hgroup>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center" x-data="{ currentYear: `${new Date().getFullYear()}`}">
+                <small>
+                    Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
+                    <br>
+                    Copyright © <span x-text="currentYear">2023</span> - All rights reserved
+                </small>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        const switchers = document.querySelectorAll("input[theme-switcher]");
+        switchers.forEach((switcher) => {
+            switcher.checked = (localStorage.getItem('picoPreferredColorScheme') || false) == 'dark' ? true : false;
+        });
+    </script>
+    <script src="resources/js/command.js"></script>
+    <script src="resources/js/library/minimal-theme-switcher.js"></script>
+    <script src="resources/js/iconEmbed.js"></script>
+    <script src="resources/js/library/modal.js"></script>
+</body>
+
+</html>
