@@ -35,7 +35,15 @@ const SmoothScrolling = () => {
     });
 }
 
+const feedback = (e) => {
+    e.preventDefault();
+    console.log(e);
+    window.open("mailto:ruslan.dzyuba@e-distribuzione.com");
+}
+
 window.onload = () => {
     stickNavbar();
     SmoothScrolling();
+
+    document.getElementById("feedback-form").addEventListener("submit", feedback);
 }
