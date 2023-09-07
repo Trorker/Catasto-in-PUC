@@ -38,17 +38,23 @@ const SmoothScrolling = () => {
 const feedback = (e) => {
     //e.preventDefault();
 
-    var oggetto = document.getElementById("subject").value;
-    var messaggio = document.getElementById("body").value;
+    var oggetto = document.getElementById("subject");
+    var messaggio = document.getElementById("body");
 
-    const mailto = `mailto:ruslan.dzyuba@e-distribuzione.com?subject=${oggetto}&body=${messaggio}`;
+    oggetto.setAttribute("aria-invalid", (!oggetto.value));
+    messaggio.setAttribute("aria-invalid", (!messaggio.value));
 
-    window.open(mailto);
+    if (oggetto.value && messaggio.value) {
+        const mailto = `mailto:ruslan.dzyuba@e-distribuzione.com?subject=${oggetto.value}&body=${messaggio.value}`;
+        window.open(mailto);
+    }
 }
+
+
 
 window.onload = () => {
     stickNavbar();
     SmoothScrolling();
 
-    document.getElementById("feedback-form").addEventListener("submit", feedback);
+    //document.getElementById("feedback-form").addEventListener("submit", feedback);
 }
