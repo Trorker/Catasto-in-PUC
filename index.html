@@ -330,7 +330,7 @@
         </section>
 
         <!-- Feedback -->
-        <section id="feedback">
+        <!--<section id="feedback">
             <div class="container">
                 <article>
                     <hgroup>
@@ -346,8 +346,30 @@
                         <textarea id="body" name="body" placeholder="Messaggio:" rows="4"
                             style="resize: none;"></textarea>
                         <button type="submit">Invia Messaggio</button>
-                        <!-- onclick="event.preventDefault()" -->
                     </form>
+                </article>
+            </div>
+        </section>-->
+
+        <!-- Feedback -->
+        <section id="feedback">
+            <div class="container">
+                <article>
+                    <hgroup>
+                        <h2>Condividi il Tuo Feedback</h2>
+                        <p>Il tuo feedback è importante per noi. Vogliamo assicurarci che lo script per le mappe
+                            catastali PUC soddisfi le tue esigenze e risolva i tuoi problemi in modo efficace.
+                            Se hai domande, suggerimenti o commenti, per favore, condividili con noi. Siamo qui per
+                            ascoltarti.</p>
+                    </hgroup>
+                    <div>
+                        <input type="text" id="subject" name="subject" placeholder="Oggetto:" aria-label="Oggetto:"
+                            required />
+                        <textarea id="body" name="body" placeholder="Messaggio:" rows="4"
+                            style="resize: none;"></textarea>
+                        <button type="button" onclick="feedback()">Invia Messaggio</button>
+                        <!-- onclick="event.preventDefault()" -->
+                    </div>
                 </article>
             </div>
         </section>
