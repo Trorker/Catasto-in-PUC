@@ -36,16 +36,17 @@ const SmoothScrolling = () => {
 }
 
 const feedback = (e) => {
-    //e.preventDefault();
-
     var oggetto = document.getElementById("subject");
     var messaggio = document.getElementById("body");
 
     oggetto.setAttribute("aria-invalid", (!oggetto.value));
     messaggio.setAttribute("aria-invalid", (!messaggio.value));
 
-    if (oggetto.value && messaggio.value) {
-        const mailto = `mailto:ruslan.dzyuba@e-distribuzione.com?subject=${oggetto.value}&body=${messaggio.value}`;
+    if (oggetto.value && messaggio.value) { 
+        const to = "ruslan.dzyuba@e-distribuzione.com";
+        const subject = `[FeedBack] - ${oggetto.value} - [Catasto in PUC]`;
+        const body = `${messaggio.value}`;
+        const mailto = `mailto:${to}?subject=${subject}&body=${body}`;
         window.open(mailto);
     }
 }
@@ -55,6 +56,4 @@ const feedback = (e) => {
 window.onload = () => {
     stickNavbar();
     SmoothScrolling();
-
-    //document.getElementById("feedback-form").addEventListener("submit", feedback);
 }
