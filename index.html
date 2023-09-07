@@ -340,12 +340,13 @@
                             Se hai domande, suggerimenti o commenti, per favore, condividili con noi. Siamo qui per
                             ascoltarti.</p>
                     </hgroup>
-                    <form>
+                    <form id="feedback-form">
                         <input type="text" id="subject" name="subject" placeholder="Oggetto:" aria-label="Oggetto:"
                             required />
                         <textarea id="message" name="message" placeholder="Messaggio:" rows="4"
                             style="resize: none;"></textarea>
-                        <button type="submit" onclick="event.preventDefault()">Invia Messaggio</button>
+                        <button type="submit">Invia Messaggio</button>
+                        <!-- onclick="event.preventDefault()" -->
                     </form>
                 </article>
             </div>
