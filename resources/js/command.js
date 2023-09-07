@@ -39,6 +39,7 @@ const feedback = (e) => {
     e.preventDefault();
     console.log(e);
     window.open("mailto:ruslan.dzyuba@e-distribuzione.com");
+    e.target.action = "mailto:ruslan.dzyuba@e-distribuzione.com?subject=" + oggetto + "&body=" + messaggio;
 }
 
 window.onload = () => {
