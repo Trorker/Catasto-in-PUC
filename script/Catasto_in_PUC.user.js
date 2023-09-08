@@ -189,6 +189,11 @@
     }
     //End About
 
+    window.getJsonURL = async (url) => {
+        const response = await fetch(url);
+        return await response.json();
+    }
+
     window.loadMap = (map) => {
 
         let EPSG_6706 = new window.L.Proj.CRS("EPSG:6706", "+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs", {
