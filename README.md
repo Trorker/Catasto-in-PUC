@@ -28,19 +28,13 @@ Caratteristiche
 
 Le caratteristiche principali sono:
 
-speed
-
 #### Installazione Facile
 
 Dopo aver installato l'estensione "Violentmonkey" su Google Chrome, aggiungere lo script è un gioco da ragazzi. Segui le istruzioni nella sezione "Installazione" e sarai pronto a partire in pochi minuti.
 
-security
-
 #### Sicurezza Garantita
 
 Lo script PUC per le mappe catastali è sicuro in quanto opera in locale, direttamente sul tuo dispositivo. È open source, quindi chiunque può controllarlo e verificarne la sicurezza. Non raccoglie, memorizza o trasmette informazioni personali o riservate.
-
-integration\_instructions
 
 #### Integrazione su PUC
 
