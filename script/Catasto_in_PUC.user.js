@@ -12,7 +12,7 @@
 // @require     https://cdn.jsdelivr.net/npm/sweetalert2@11
 // @require     https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js
-// @require     https://github.com/Trorker/Catasto-in-PUC/library/vComparator.js
+// @require     https://github.com/Trorker/Catasto-in-PUC/resources/js/library/vComparator.js
 // ==/UserScript==
 
 (function () {
