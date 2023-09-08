@@ -4,21 +4,18 @@
 // @version     1.1.0
 // @description Aggiunge il catasto nelle mappe PUC
 // @author      Ruslan Dzyuba
-// @downloadURL https://trorker.github.io/MyTools/script/Catasto_in_PUC.user.js
-// @updateURL   https://trorker.github.io/MyTools/script/Catasto_in_PUC.user.js
+// @downloadURL https://github.com/Trorker/Catasto-in-PUC/script/Catasto_in_PUC.user.js
+// @updateURL   https://github.com/Trorker/Catasto-in-PUC/script/Catasto_in_PUC.user.js
 // @match       https://puc-ita.enelint.global/EditRete/*
 // @match       https://puc-ita.enelint.global/p3/#/P3?*
-// @icon        https://trorker.github.io/MyTools/resource/img/Catasto_in_PUC.logo.svg
+// @icon        https://github.com/Trorker/Catasto-in-PUC/resource/img/Catasto_in_PUC.logo.svg
 // @require     https://cdn.jsdelivr.net/npm/sweetalert2@11
 // @require     https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js
-// @require     https://trorker.github.io/MyTools/library/L.KML.js
-// @require     https://trorker.github.io/MyTools/library/vComparator.js
+// @require     https://github.com/Trorker/Catasto-in-PUC/library/vComparator.js
 // ==/UserScript==
 
 (function () {
-    //https://wms.cartografia.agenziaentrate.gov.it/inspire/ajax/ajax.php?op=getDatiOggetto&lon=11.436091661453247&lat=44.54467513660329
-    //https://nominatim.openstreetmap.org/search?q=mirandola&format=json&json_callback=_l_osmgeocoder_0
     'use strict';
 
     //Add css
@@ -202,175 +199,7 @@
     }
     //End About
 
-    //funzione generale per caricare più file
-    window.uploadDocuments = async (files) => {
-        const filePromises = Object.values(files).map((file) => {
-            // Return a promise per file
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = async (e) => {
-                    try {
-                        // Resolve the promise with the response value
-                        resolve({
-                            result: e.target.result,
-                            name: file.name,
-                            lastModified: file.lastModified,
-                            lastModifiedDate: file.lastModifiedDate,
-                            size: file.size,
-                            type: file.type,
-                        });
-                    } catch (err) {
-                        reject(err);
-                    }
-                };
-                reader.onerror = (error) => {
-                    window.ErrorAlert('Qualcosa è andato storto!');
-                    reject(error);
-                };
-                reader.readAsText(file);
-            });
-        });
-
-        // Wait for all promises to be resolved
-        const fileInfos = await Promise.all(filePromises);
-
-        // Profit
-        return fileInfos;
-    };
-
-    //load file KML
-    window.ModaLoadFile = async (map) => {
-        let files = [];
-
-        const { value } = await window.Swal.fire({
-            title: 'Carica il file kml',
-            html: `
-                <div class="drop-container">
-                    <div class="drop">
-                        <span class="text">Drag and drop your file here.</span>
-                        <div class="or-con">
-                            <span class="line"></span>
-                            <span class="or">OR</span>
-                            <span class="line"></span>
-                        </div>
-                        <label for="file-upload">Browse Files</label>
-                        <input type="file" id="file-upload" class="file-input" multiple accept=".kml"/>
-                    </div>
-                </div>
-                `,
-            focusConfirm: false,
-            showCancelButton: true,
-            confirmButtonText: 'Carica',
-            cancelButtonText: 'Cancella',
-            willOpen: () => {
-                const drop = document.querySelector(".drop");
-                const input = document.querySelector(".drop input");
-                const text = document.querySelector(".text");
-
-                input.addEventListener("change", () => {
-                    files = input.files;
-                    console.log(files);
-                    let filesLoaded = "";
-                    if (Object.values(files).length > 0) {
-                        drop.classList.add("active");
-                        filesLoaded = Object.values(files).length + " file loaded." + "<br>";
-                    } else {
-                        drop.classList.remove("active");
-                    }
-                    text.innerHTML = filesLoaded + "Drag and drop your file here.";
-                });
-
-                drop.addEventListener("dragover", (e) => {
-                    e.preventDefault();
-                    text.innerHTML = "Release your mouse to drop.";
-                    drop.classList.add("active");
-                });
-
-                drop.addEventListener("dragleave", (e) => {
-                    e.preventDefault();
-                    text.innerHTML = "Drag and drop your file here.";
-                    drop.classList.remove("active");
-                });
-
-                drop.addEventListener("drop", (e) => {
-                    e.preventDefault();
-                    files = e.dataTransfer.files;
-                    text.innerHTML = Object.values(files).length + " file loaded." + "<br>" + "Drag and drop your file here.";
-                });
-            },
-            preConfirm: () => {
-                if (Object.values(files).length <= 0) window.Swal.showValidationMessage("Selezione il file da caricare!");
-
-                Object.values(files).map((file) => {
-                    if ( (file.name.substr((file.name.lastIndexOf(".") + 1))) != "kml") window.Swal.showValidationMessage("Selezione solo file .kml!"); //accrocco ma funziona
-                });
-
-                return {
-                    confirm: true
-                }
-            }
-        });
-
-        if (value.confirm && Object.values(files).length > 0) {
-            uploadDocuments(files).then(async (loadFiles) => {
-              console.log(loadFiles);
-              loadFiles.forEach((file) => {
-                  // Create new kml overlay
-                  const parser = new DOMParser();
-                  const kml = parser.parseFromString(file.result, 'text/xml');
-                  console.log(kml);
-                  const track = new L.KML(kml);
-                  console.log(track);
-                  map.addLayer(track);
-
-
-
-                 track.eachLayer((layer) => { //eachLayer
-                    if (layer.options.name)
-                        console.log("Name Folder: " + layer.options.name, layer);
-                    else
-                        console.log( (Array.isArray(layer._latlngs) ? "Lines" : "Points" ), layer);
-
-                    if (layer.options.name == "Cavo elicord 3x35") map.removeLayer(layer);//si può nascondere un livello se non si vuole vederlo
-
-                    //if (layer.hasOwnProperty('_layer'))
-                    layer.eachLayer((layer) => { //eachLayer //recursia?????????????
-                        if (layer.options.name)
-                            console.log("Name Folder: " + layer.name, layer);
-                        else
-                            console.log( (Array.isArray(layer._latlngs) ? "Lines" : "Points" ), layer);
-                    });
-                 });
-
-                  const GeoJSON = track.toGeoJSON();
-                  const allLayers = L.geoJson(GeoJSON)._layers;
-                  Object.values(allLayers).forEach((layer, index) => { //eachLayer
-                    GeoJSON.features[index].properties = layer.options;
-                  });
-                  console.log("GeoJSON: ", GeoJSON); //get GeoJSON
-
-                  // Adjust map to show the kml
-                  map.fitBounds(track.getBounds());
-              });
-            });
-        }
-    }
-
-    window.getJsonURL = async (url) => {
-        const response = await fetch(url);
-        return await response.json();
-    }
-
-    window.loadMap = (map) => {  //https://github.com/rowanwins/leaflet-easyPrint
-
-        /*L.Marker.prototype.options.icon = L.icon({ //Change default marker icon
-              iconUrl: "https://earth.google.com/earth/rpc/cc/icon?color=1976d2&id=2000&scale=4",
-              iconSize: [30, 30],
-              iconAnchor: [15, 30],
-        });
-        var marker = L.marker([44.873231, 11.081551]).addTo(map).bindPopup("Sede e-distribuzione Mirandola (MO)");; //Test marcher*/
-
-
+    window.loadMap = (map) => {
 
         let EPSG_6706 = new window.L.Proj.CRS("EPSG:6706", "+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs", {
             resolutions: [8192, 4096, 2048, 1024, 512, 256, 128]
@@ -427,24 +256,6 @@
 
         let Catasto = L.layerGroup(Object.values(overlayMaps));
 
-        /*let leyers = { // rimosso con aggiunta del tasto personalizzazto
-            'Catasto&nbsp;<b style="font-size: 0.8em;"><i onclick="window.About()" style="color: #ff0f64; cursor: pointer">by Ruslan</i>&nbsp;&#169;</b>': Catasto,
-            //"test": wmsCatasto
-        };
-
-        var layerControl = L.control.layers(null, leyers, { position: "bottomleft", collapsed: false }).addTo(map); //bottomleft || topleft
-
-        map.on('overlayadd', (e) => {
-            console.log("overlayadd", e);
-            //wmsCatasto.bringToFront();
-            Object.values(e.layer._layers).map(layer => {
-                layer.bringToFront();
-            });
-
-            global_map.tileOverlays.gisOverlay.proprietary_tileOverlay.bringToFront(); //BETA add in 1.0.6
-
-        });*/
-
         map.addEventListener('click', async (e) => { //contextmenu
             if (map.hasLayer(Catasto)) {
                 var lat = Math.round(e.latlng.lat * 100000) / 100000;
@@ -494,8 +305,7 @@
             }
         });
 
-        //https://github.com/turbo87/sidebar-v2/
-        L.Control.Button = L.Control.extend({ //https://stackoverflow.com/questions/64046196/i%C2%B4m-stucked-creating-a-new-leaflet-custom-control
+        L.Control.Button = L.Control.extend({
             options: {
                 position: 'topright'
             },
@@ -507,42 +317,7 @@
                     e.preventDefault();
                     console.log("Impostazioni ", e);
 
-                    //window.About();
-                    //return 0 //in sviluppo
-
-                    window.Swal.fire({
-                        title: 'Impostazioni',
-                        html: `
-                              <br><br><div>
-                                  <div style="display: flex; justify-content: space-around; align-items: center;">
-                                      <span>Catasto: </span><input class="switch right" type="checkbox" id="switchCatasto"/>
-                                  </div>
-                                  <div style="display: flex; justify-content: space-around; align-items: center;">
-                                      <span>File .kml: </span><span onclick="window.ModaLoadFile(window.global_map.maps.leaflet);" class="link">load</span>
-                                  </div>
-                                  <br><br>
-                                  <div style="display: flex; justify-content: space-around; align-items: center;">
-                                      <span onclick="window.About()" class="link">About</span>
-                                  </div>
-                              </div>
-                            `,
-                        willOpen: async () => {
-                            let switchCatasto = document.getElementById("switchCatasto");
-
-                            if(map.hasLayer(Catasto)) switchCatasto.checked = true;
-
-                            switchCatasto.addEventListener('change', (event) => {
-                                console.log(Catasto);
-                                Catasto.active = true;
-                                console.log(Catasto);
-                                if (event.currentTarget.checked) {
-                                    Catasto.addTo(map);
-                                } else {
-                                    map.removeLayer(Catasto);
-                                }
-                            });
-                        },
-                    });
+                    window.About();
                 });
 
                 container.style.cssText = "background-color: white; text-align: center; padding: 4px; font-size: 15px;";
@@ -592,54 +367,3 @@
 
     }
 })();
-
-
-/*
- * function GoogleMapsURLToEmbedURL(GoogleMapsURL) //https://github.com/Zverik/leaflet-streetview
-{
-    var coords = /\@([0-9\.\,\-a-zA-Z]*)/.exec(GoogleMapsURL);
-    if(coords!=null)
-    {
-        var coordsArray = coords[1].split(',');
-        return "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d20000!2d"+coordsArray[1]+"!3d"+coordsArray[0]+"!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2suk!4v1486486434098";
-    }
-}
- *
-Building a Google Street View URL
-
-Basic Google Map URL http://maps.google.com/maps?q=
-
-q= Query - anything passed in this parameter is treated as if it had been typed into the query box on the maps.google.com page.
-
-Basic url to display GPS cords location
-
-http://maps.google.com/maps?q=31.33519,-89.28720
-
-http://maps.google.com/maps?q=&layer=c
-
-layer= Activates overlays. Current options are "t" traffic, "c" street view. Append (e.g. layer=tc) for simultaneous.
-
-http://maps.google.com/maps?q=&layer=c&cbll=
-
-cbll= Latitude,longitude for Street View
-
-http://maps.google.com/maps?q=&layer=c&cbll=31.33519,-89.28720
-
-http://maps.google.com/maps?q=&layer=c&cbll=31.335198,-89.287204&cbp=
-
-cbp= Street View window that accepts 5 parameters:
-
-Street View/map arrangement, 11=upper half Street View and lower half map, 12=mostly Street View with corner map
-
-Rotation angle/bearing (in degrees)
-
-Tilt angle, -90 (straight up) to 90 (straight down)
-
-Zoom level, 0-2
-
-Pitch (in degrees) -90 (straight up) to 90 (straight down), default 5
-
-The one below is: (11) upper half Street View and lower half map, (0) Facing North, (0) Straight Ahead, (0) Normal Zoom, (0) Pitch of 0
-
-This one works as is, just change the cords and if you want to face a different direction (the 0 after 11) http://maps.google.com/maps?q=&layer=c&cbll=31.335198,-89.287204&cbp=11,0,0,0,0
-*/
