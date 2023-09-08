@@ -58,16 +58,6 @@
 
     }, 100);
 
-    /*window.Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'The feature is still in development.',
-        showConfirmButton: false,
-        showCloseButton: true,
-    });
-
-        return false//In sviluppo*/
-
     window.Update = (script) => {
 
       fetch(script.updateURL)
