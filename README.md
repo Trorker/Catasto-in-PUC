@@ -88,9 +88,9 @@ Ora sei pronto per sfruttare appieno le mappe catastali su PUC grazie al nostro 
 
 ###### Follow Us
 
-*   [](https://github.com/Trorker)
-*   [](https://www.instagram.com/trorker/)
-*   [](https://www.linkedin.com/in/ruslan-dzyuba/)
+*   [![](resources/img/icons/github.svg)](https://github.com/Trorker)
+*   [![](resources/img/icons/instagram.svg)](https://www.instagram.com/trorker/)
+*   [![](resources/img/icons/linkedin.svg)](https://www.linkedin.com/in/ruslan-dzyuba/)
 
 ###### Useful Links
 
