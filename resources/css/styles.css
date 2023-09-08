@@ -183,10 +183,13 @@ main article {
     background-color: color-mix(in srgb, var(--background-color), transparent 50%);
 }
 
-.figure-img {
-    transform: perspective(400px) rotate3d(1, -1, 0, 8deg) scale(.9);
+figure {
     box-shadow: 0 0 10px 0px var(--contrast);
     border-radius: 10px;
+}
+
+body>header .figure-img {
+    transform: perspective(400px) rotate3d(1, -1, 0, 8deg) scale(.9);
 }
 
 .text-center {
