@@ -88,7 +88,8 @@ input[theme-switcher]:checked::before {
     }
 }
 
-a[target="_blank"].external-link::after {
+a.external-link::after {
+    /* a[target="_blank"]::after */
     content: "\e89e";
     font-family: 'Material Symbols Outlined';
     font-size: 0.8em;
