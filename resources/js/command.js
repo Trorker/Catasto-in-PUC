@@ -42,6 +42,16 @@ const feedback = (e) => {
     oggetto.setAttribute("aria-invalid", (!oggetto.value));
     messaggio.setAttribute("aria-invalid", (!messaggio.value));
 
+    if (!messaggio.value) {
+        messaggio.setCustomValidity("Questo campo è obbligatorio!");
+        messaggio.reportValidity();
+    }
+
+    if (!oggetto.value) {
+        oggetto.setCustomValidity("Questo campo è obbligatorio!");
+        oggetto.reportValidity();
+    }
+
     if (oggetto.value && messaggio.value) { 
         const to = "ruslan.dzyuba@e-distribuzione.com";
         const subject = `[FeedBack] - ${oggetto.value} - [Catasto in PUC]`;
