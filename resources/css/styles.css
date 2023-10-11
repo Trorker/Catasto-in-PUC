@@ -210,6 +210,16 @@ body>header .figure-img {
 
 #features article .material-symbols-outlined {
     font-size: calc(var(--font-size) * 3);
+
+    -webkit-transition: font-size .3s ease-in-out;
+    -moz-transition: font-size .3s ease-in-out;
+    -o-transition: font-size .3s ease-in-out;
+    transition: font-size .3s ease-in-out;
+}
+
+#features article:hover .material-symbols-outlined {
+    font-size: calc(var(--font-size) * 4);
+    color: var(--primary);
 }
 
 a {
