@@ -278,7 +278,7 @@
                 let datiIndirizzoTxt = `<span>&#128234;: ${nominatim.address.road}, ${nominatim.address.house_number | 0} - ${nominatim.address.postcode} ${nominatim.address.town} (${nominatim.address["ISO3166-2-lvl6"].substr(nominatim.address["ISO3166-2-lvl6"].indexOf("-") + 1, 2)})</span>`;
                 let datiCoordinateTxt = `<i>&#128204;: ${lat}, ${lng}</i>`;
                 let datiAuthorTxt = `<b style="font-size: 0.8em;"><i onclick="window.About()" style="color: #ff0f64; cursor: pointer">by Ruslan</i>&nbsp;&#169;</b>`;
-                let datiLicenceTxt = `<a href="https://osm.org/copyright" style="font-size: 0.6rem">Data © OpenStreetMap contributors, ODbL 1.0.</a>`;
+                let datiLicenceTxt = `<a href="https://osm.org/copyright" style="font-size: 0.6rem" target="_blank">Data © OpenStreetMap contributors, ODbL 1.0.</a>`;
                 let content = `${datiCatastoTxt}<br><br>${datiIndirizzoTxt}<br>${datiCoordinateTxt}<br><br>${datiAuthorTxt} - ${datiLicenceTxt}`; //<div style="height: 200px" id="GoogleStreetView"></div>
 
                 L.popup().setLatLng(e.latlng).setContent(content).openOn(map);
