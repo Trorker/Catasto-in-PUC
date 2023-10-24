@@ -60,21 +60,46 @@
 
     window.ScriptUpdate = (script) => {
 
-      fetch(script.updateURL)
-        .then(response => response.text())
-        .then((text) => {
-            const regex = /\/\/\s+@version\s+(([0-9.]+)[\s+\w+](\w*))/i; // /\/\/\s+@version\s+((\d[+\.\d+])[\s+\w+](\w))/i
-            //console.log(text);
-            let vLoad = regex.exec(text) || null;
-            console.log(vLoad);
-            console.log( vComparator.getVersionType(vLoad[1]) );
+        fetch(script.updateURL)
+            .then(response => response.text())
+            .then((text) => {
+                const regex = /\/\/\s+@version\s+(([0-9.]+)[\s+\w+](\w*))/i; // /\/\/\s+@version\s+((\d[+\.\d+])[\s+\w+](\w))/i
+                //console.log(text);
+                let vLoad = regex.exec(text) || null;
+                console.log(vLoad);
+                console.log(vComparator.getVersionType(vLoad[1]));
+                console.log(vComparator.compareSoftwareVersions(script.version, vLoad[1]));
 
-        })
-        .catch(err => console.log(err))
+                switch (vComparator.compareSoftwareVersions(script.version, vLoad[1])) {
+                    case (-1):
+                        // it's old version
+                        window.Swal.fire({
+                            icon: 'info',
+                            title: script.name,
+                            text: "C'è la nuova versione dello script.",
+                            footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
+                        });
+                        break;
+                    case (1):
+                        // it's new version
+                        window.Swal.fire({
+                            icon: 'success',
+                            title: "Update Script " + script.name,
+                            text: 'Lo script è stato agiornato', //qui inserire le novitÃ . (esposrtarli in un nuova variabile)
+                            footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
+                        });
+                        break;
+                    default:
+                        // code block
+                        console.log("default");
+                }
+
+            })
+            .catch(err => console.log(err))
 
         if (localStorage.getItem(script.name)) {
             const Lscript = JSON.parse(localStorage.getItem(script.name));
-            switch(vComparator.compareSoftwareVersions(script.version, Lscript.version)) {
+            switch (vComparator.compareSoftwareVersions(script.version, Lscript.version)) {
                 case (-1):
                     // it's old version //https://stackoverflow.com/questions/53369092/can-i-get-a-userscripts-version-and-use-it-on-another-webpage
                     window.Swal.fire({
@@ -83,7 +108,7 @@
                         text: "C'è la nuova versione dello script.",
                         footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
                     });
-                break;
+                    break;
                 case (1):
                     // it's new version
                     window.Swal.fire({
@@ -92,7 +117,7 @@
                         text: 'Lo script è stato agiornato', //qui inserire le novitÃ . (esposrtarli in un nuova variabile)
                         footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
                     });
-                break;
+                    break;
                 default:
                     // code block
                     console.log("default");
@@ -243,8 +268,8 @@
                 console.log("Recupero del Tile non caricato.");
                 e.tile.src = e.tile.src + "&time=" + new Date().getTime();
                 e.tile.onload = function () { ////BETA add in 1.0.8
-                  console.log("Tile recuperato.");
-                  e.tile.classList.add("leaflet-tile-loaded");
+                    console.log("Tile recuperato.");
+                    e.tile.classList.add("leaflet-tile-loaded");
                 }
             });
         });
@@ -321,14 +346,14 @@
                 button.style.backgroundImage = "url(" + GM_info.script.icon + ")";
 
                 map.on('layeradd', (e) => {
-                    if(map.hasLayer(Catasto)) {
+                    if (map.hasLayer(Catasto)) {
                         container.style.border = '2px solid #ff0062';
                     } else {
                         container.style.border = '';
                     }
                 });
                 map.on('layerremove', (e) => {
-                    if(map.hasLayer(Catasto)) {
+                    if (map.hasLayer(Catasto)) {
                         container.style.border = '2px solid #ff0062';
                     } else {
                         container.style.border = '';
@@ -338,7 +363,7 @@
                 L.DomEvent.disableClickPropagation(button);
 
                 L.DomEvent.on(button, 'click', () => {
-                    if(map.hasLayer(Catasto)) {
+                    if (map.hasLayer(Catasto)) {
                         map.removeLayer(Catasto);
                         container.style.border = '';
                     } else {
@@ -346,7 +371,7 @@
                         container.style.border = '2px solid #ff0062';
 
                         Object.values(Catasto._layers).map(layer => {
-                          layer.bringToFront();
+                            layer.bringToFront();
                         });
 
                         global_map.tileOverlays.gisOverlay.proprietary_tileOverlay.bringToFront(); //BETA add in 1.0.6
@@ -355,7 +380,7 @@
 
                 return container;
             },
-            onRemove: (map) => {},
+            onRemove: (map) => { },
         });
         var control = new L.Control.Button()
         control.addTo(map);
