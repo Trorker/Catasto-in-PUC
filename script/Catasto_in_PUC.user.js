@@ -58,6 +58,18 @@
 
     }, 100);
 
+    window.Toast = window.Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', window.Swal.stopTimer)
+            toast.addEventListener('mouseleave', window.Swal.resumeTimer)
+        }
+    });
+
     window.ScriptUpdate = (script) => {
 
         fetch(script.updateURL)
@@ -74,10 +86,19 @@
                     case (-1):
                         // it's old version
                         window.Swal.fire({
-                            icon: 'info',
                             title: script.name,
-                            text: "C'è la nuova versione dello script.",
+                            icon: 'info',
+                            html: "C'è la nuova versione dello script.",
+                            showCancelButton: true,
+                            cancelButtonText: "Chiudi",
+                            confirmButtonText: 'Aggiorna',
+                            //allowOutsideClick: false,
+                            //preConfirm: (value) => { return false } //cancell event to clouse modal (click button confirm)
                             footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.open(script.updateURL);
+                            }
                         });
                         break;
                     case (1):
@@ -103,10 +124,19 @@
                 case (-1):
                     // it's old version //https://stackoverflow.com/questions/53369092/can-i-get-a-userscripts-version-and-use-it-on-another-webpage
                     window.Swal.fire({
-                        icon: 'info',
                         title: script.name,
-                        text: "C'è la nuova versione dello script.",
+                        icon: 'info',
+                        html: "C'è la nuova versione dello script.",
+                        showCancelButton: true,
+                        cancelButtonText: "Chiudi",
+                        confirmButtonText: 'Aggiorna',
+                        //allowOutsideClick: false,
+                        //preConfirm: (value) => { return false } //cancell event to clouse modal (click button confirm)
                         footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.open(script.updateURL);
+                        }
                     });
                     break;
                 case (1):
