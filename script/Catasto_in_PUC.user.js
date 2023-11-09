@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Catasto in PUC
 // @namespace   https://github.com/Trorker/Catasto-in-PUC
-// @version     1.1.2 release
+// @version     1.1.2 alpha
 // @description Aggiunge il catasto nelle mappe PUC
 // @author      Ruslan Dzyuba
 // @downloadURL https://trorker.github.io/Catasto-in-PUC/script/Catasto_in_PUC.user.js
@@ -15,7 +15,7 @@
 // @require     https://trorker.github.io/Catasto-in-PUC/resources/js/library/vComparator.js
 // ==/UserScript==
 
-(function () {
+(function () { // @grant       GM_openInTab
     'use strict';
 
     //Add css
@@ -117,7 +117,8 @@
                             footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
                         }).then((result) => {
                             if (result.isConfirmed) {
-                                window.open(script.updateURL);
+                              var new_window = window.open(script.updateURL + '?t=' + Date.now());
+                              new_window.onbeforeunload = () => { location.reload() }
                             }
                         });
                         break;
@@ -155,7 +156,8 @@
                         footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.open(script.updateURL);
+                              var new_window = window.open(script.updateURL + '?t=' + Date.now());
+                              new_window.onbeforeunload = () => { location.reload() }
                         }
                     });
                     break;
