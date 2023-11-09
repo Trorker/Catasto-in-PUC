@@ -117,13 +117,14 @@
                             footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
                         }).then((result) => {
                             if (result.isConfirmed) {
-                              var new_window = window.open(script.updateURL + '?t=' + Date.now());
+                              var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
                               new_window.onbeforeunload = () => { location.reload() }
                             }
                         });
                         break;
                     case (1):
                         // it's new version
+                        localStorage.removeItem("isDismissed_News_Grid_People_Awards_2023"); //add in 1.1.2
                         window.Swal.fire({
                             icon: 'success',
                             title: "Update Script " + script.name,
@@ -156,13 +157,14 @@
                         footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                              var new_window = window.open(script.updateURL + '?t=' + Date.now());
+                              var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
                               new_window.onbeforeunload = () => { location.reload() }
                         }
                     });
                     break;
                 case (1):
                     // it's new version
+                    localStorage.removeItem("isDismissed_News_Grid_People_Awards_2023"); //add in 1.1.2
                     window.Swal.fire({
                         icon: 'success',
                         title: "Update Script " + script.name,
@@ -432,11 +434,8 @@
 
                         global_map.tileOverlays.gisOverlay.proprietary_tileOverlay.bringToFront(); //BETA add in 1.0.6
 
-                        /*if ( !localStorage.getItem("isDismissed_News_Grid_People_Awards_2023") ) {
-                          localStorage.setItem("isDismissed_News_Grid_People_Awards_2023", false);
-                        }*/
 
-                        if (new Date().getTime() <= new Date("2023-11-10T23:59:59.000Z").getTime() && !localStorage.getItem("isDismissed_News_Grid_People_Awards_2023")) {
+                        if (new Date().getTime() <= new Date("2023-11-10T23:59:59.000Z").getTime() && !localStorage.getItem("isDismissed_News_Grid_People_Awards_2023")) {//add in 1.1.2
                             window.News.fire({
                                 icon: 'info',
                                 title: 'il progetto “Mappe catastali in PUC” è stato candidato sulla piattaforma WeGrid all’interno di "Grid People Awards 2023"'
