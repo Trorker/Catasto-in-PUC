@@ -336,7 +336,8 @@
 
                 document.body.style.cursor = "progress";
 
-                //https://nominatim.openstreetmap.org/reverse?lat=<value>&lon=<value>&<params>
+                try {
+                                    //https://nominatim.openstreetmap.org/reverse?lat=<value>&lon=<value>&<params>
                 const nominatim = await window.getJsonURL(`https://nominatim.openstreetmap.org/reverse?lon=${lng}&lat=${lat}&format=json&accept-language=it`);
                 console.log(nominatim); //fare una funzione dove verifica la variabile, se non ÃƒÂ¨ definita ti restituise altro valore es.  nominatim.address.house_number | "Nan"
 
@@ -372,6 +373,9 @@
                         addressControl: false,
                     },
                 );*/
+                } catch (error) {
+                    console.error(error);
+                }
 
                 document.body.style.cursor = "default";
             }
