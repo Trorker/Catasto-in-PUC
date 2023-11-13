@@ -8,7 +8,7 @@ Semplifica l'accesso alle Mappe Catastali
 Scopri come il nostro script rende facile l'accesso alle mappe catastali su PUC.
 --------------------------------------------------------------------------------
 
-![Screenshot PUC](resources/img/screenshot.png) 
+![Screenshot PUC](resources/img/bg.png) 
 
 Mappe catastali integrate
 -------------------------
