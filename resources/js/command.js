@@ -35,6 +35,12 @@ const SmoothScrolling = () => {
     });
 }
 
+const installScript = (e) => {
+    const dataUrl = "aHR0cHM6Ly9lbmVsY29tLnNoYXJlcG9pbnQuY29tLzp1Oi9yL3NpdGVzL1Byb2dyYW1zL0RvY3VtZW50aSUyMGNvbmRpdmlzaS9TY3JpcHRzL0NhdGFzdG8lMjBpbiUyMFBVQy9yZWxlYXNlL0NhdGFzdG9faW5fUFVDLnVzZXIuanM="; 
+
+    window.open(window.atob(dataUrl), '_blank').focus();
+}
+
 const feedback = (e) => {
     var oggetto = document.getElementById("subject");
     var messaggio = document.getElementById("body");
