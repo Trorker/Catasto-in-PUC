@@ -227,6 +227,10 @@ a {
     /* Rimuove sfondo dai link */
 }
 
+blockquote.allert {
+    --blockquote-border-color: red;
+}
+
 body>footer {
     background-color: var(--card-background-color);
     box-shadow: var(--card-box-shadow);
