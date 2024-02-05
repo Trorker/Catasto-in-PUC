@@ -1,0 +1,4 @@
+Idee da realizzare:
+
+- Aggiungere la ricerca per particella
+- Aggiungere dentro lo script riconoscimento del Sito Web per confemrare che è stato instalalto corettamente. (easter  egg)
