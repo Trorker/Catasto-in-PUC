@@ -70,7 +70,7 @@
         }
     });
 
-      window.News = window.Swal.mixin({
+    window.News = window.Swal.mixin({
         toast: true,
         position: 'top-end',
         //showConfirmButton: false,
@@ -117,8 +117,8 @@
                             footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
                         }).then((result) => {
                             if (result.isConfirmed) {
-                              var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
-                              new_window.onbeforeunload = () => { location.reload() }
+                                var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
+                                new_window.onbeforeunload = () => { location.reload() }
                             }
                         });
                         break;
@@ -157,8 +157,8 @@
                         footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                              var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
-                              new_window.onbeforeunload = () => { location.reload() }
+                            var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
+                            new_window.onbeforeunload = () => { location.reload() }
                         }
                     });
                     break;
@@ -256,6 +256,7 @@
                               </h3>
                               <div style="font-size: 0.8em">
                                   <i>Version:&nbsp;${ScriptInfo.version}&nbsp;</i><br>
+                                  <a href="https://trorker.github.io/Catasto-in-PUC/" style="text-decoration: none;" target="_blank"><i>Web Site</i></a><br>
                                   <span class="link" onclick="window.OpenSource()"><i>Open-Source resources used</i></span><br>
                                   <span class="link" onclick="window.License()"><i>License</i></span>
                               </div><br><br>
@@ -339,42 +340,42 @@
                 document.body.style.cursor = "progress";
 
                 try {
-                                    //https://nominatim.openstreetmap.org/reverse?lat=<value>&lon=<value>&<params>
-                const nominatim = await window.getJsonURL(`https://nominatim.openstreetmap.org/reverse?lon=${lng}&lat=${lat}&format=json&accept-language=it`);
-                console.log(nominatim); //fare una funzione dove verifica la variabile, se non ÃƒÂ¨ definita ti restituise altro valore es.  nominatim.address.house_number | "Nan"
+                    //https://nominatim.openstreetmap.org/reverse?lat=<value>&lon=<value>&<params>
+                    const nominatim = await window.getJsonURL(`https://nominatim.openstreetmap.org/reverse?lon=${lng}&lat=${lat}&format=json&accept-language=it`);
+                    console.log(nominatim); //fare una funzione dove verifica la variabile, se non ÃƒÂ¨ definita ti restituise altro valore es.  nominatim.address.house_number | "Nan"
 
-                let datiCatasto = await window.getJsonURL(`https://wms.cartografia.agenziaentrate.gov.it/inspire/ajax/ajax.php?op=getDatiOggetto&lon=${lng}&lat=${lat}`);
-                console.log(datiCatasto);
+                    let datiCatasto = await window.getJsonURL(`https://wms.cartografia.agenziaentrate.gov.it/inspire/ajax/ajax.php?op=getDatiOggetto&lon=${lng}&lat=${lat}`);
+                    console.log(datiCatasto);
 
-                //https://stackoverflow.com/questions/387942/google-street-view-url
-                //http://web.archive.org/web/20110903160743/http://mapki.com/wiki/Google_Map_Parameters#Street_View
-                //https://maps.google.com/maps?q=barcelona&amp;aq=f&amp;ie=UTF8&amp;hl=es&amp;hq=&amp;hnear=Barcelona,+Catalu%C3%B1a&amp;ll=41.385064,2.173404&amp;spn=0.32884,0.727158&amp;t=h&amp;z=11&amp;layer=c&amp;cbll=41.384233,2.177893&amp;panoid=cHQCwlORibRoxMqj2m9IVg&amp;cbp=12,0,,0,0&amp;source=embed&amp;output=svembed
-                //https://maps.google.com/maps?layer=c&amp;cbll={latitude},{longitude}&amp;cbp=,{bearing},{tilt},{zoom},{pitch}&amp;source=embed&amp;output=svembed
-                //const url = `https://maps.google.com/maps?layer=c&amp;cbll=${lat + ", " + lng}&amp;cbp=12,0,0,0,0&amp;source=embed&amp;output=svembed`;
-                //let GoogleStreetView = `<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="${url}"></iframe>`;
+                    //https://stackoverflow.com/questions/387942/google-street-view-url
+                    //http://web.archive.org/web/20110903160743/http://mapki.com/wiki/Google_Map_Parameters#Street_View
+                    //https://maps.google.com/maps?q=barcelona&amp;aq=f&amp;ie=UTF8&amp;hl=es&amp;hq=&amp;hnear=Barcelona,+Catalu%C3%B1a&amp;ll=41.385064,2.173404&amp;spn=0.32884,0.727158&amp;t=h&amp;z=11&amp;layer=c&amp;cbll=41.384233,2.177893&amp;panoid=cHQCwlORibRoxMqj2m9IVg&amp;cbp=12,0,,0,0&amp;source=embed&amp;output=svembed
+                    //https://maps.google.com/maps?layer=c&amp;cbll={latitude},{longitude}&amp;cbp=,{bearing},{tilt},{zoom},{pitch}&amp;source=embed&amp;output=svembed
+                    //const url = `https://maps.google.com/maps?layer=c&amp;cbll=${lat + ", " + lng}&amp;cbp=12,0,0,0,0&amp;source=embed&amp;output=svembed`;
+                    //let GoogleStreetView = `<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="${url}"></iframe>`;
 
 
-                let datiCatastoTxt = datiCatasto.TIPOLOGIA == "PARTICELLA" ? `<b>&#128220;: ${datiCatasto.DENOM}<br>&#128209;: Foglio ${datiCatasto.FOGLIO} Mappale ${datiCatasto.NUM_PART}</b>` : `<b>${datiCatasto.COMUNI} ${datiCatasto.TIPOLOGIA}</b>`;
-                let datiIndirizzoTxt = `<span>&#128234;: ${nominatim.address.road}, ${nominatim.address.house_number | 0} - ${nominatim.address.postcode} ${nominatim.address.town} (${nominatim.address["ISO3166-2-lvl6"].substr(nominatim.address["ISO3166-2-lvl6"].indexOf("-") + 1, 2)})</span>`;
-                let datiCoordinateTxt = `<i>&#128204;: ${lat}, ${lng}</i>`;
-                let datiAuthorTxt = `<b style="font-size: 0.8em;"><i onclick="window.About()" style="color: #ff0f64; cursor: pointer">by Ruslan</i>&nbsp;&#169;</b>`;
-                let datiLicenceTxt = `<a href="https://osm.org/copyright" style="font-size: 0.6rem" target="_blank">Data © OpenStreetMap contributors, ODbL 1.0.</a>`;
-                let content = `${datiCatastoTxt}<br><br>${datiIndirizzoTxt}<br>${datiCoordinateTxt}<br><br>${datiAuthorTxt} - ${datiLicenceTxt}`; //<div style="height: 200px" id="GoogleStreetView"></div>
+                    let datiCatastoTxt = datiCatasto.TIPOLOGIA == "PARTICELLA" ? `<b>&#128220;: ${datiCatasto.DENOM}<br>&#128209;: Foglio ${datiCatasto.FOGLIO} Mappale ${datiCatasto.NUM_PART}</b>` : `<b>${datiCatasto.COMUNI} ${datiCatasto.TIPOLOGIA}</b>`;
+                    let datiIndirizzoTxt = `<span>&#128234;: ${nominatim.address.road}, ${nominatim.address.house_number | 0} - ${nominatim.address.postcode} ${nominatim.address.town} (${nominatim.address["ISO3166-2-lvl6"].substr(nominatim.address["ISO3166-2-lvl6"].indexOf("-") + 1, 2)})</span>`;
+                    let datiCoordinateTxt = `<i>&#128204;: ${lat}, ${lng}</i>`;
+                    let datiAuthorTxt = `<b style="font-size: 0.8em;"><i onclick="window.About()" style="color: #ff0f64; cursor: pointer">by Ruslan</i>&nbsp;&#169;</b>`;
+                    let datiLicenceTxt = `<a href="https://osm.org/copyright" style="font-size: 0.6rem" target="_blank">Data © OpenStreetMap contributors, ODbL 1.0.</a>`;
+                    let content = `${datiCatastoTxt}<br><br>${datiIndirizzoTxt}<br>${datiCoordinateTxt}<br><br>${datiAuthorTxt} - ${datiLicenceTxt}`; //<div style="height: 200px" id="GoogleStreetView"></div>
 
-                L.popup().setLatLng(e.latlng).setContent(content).openOn(map);
+                    L.popup().setLatLng(e.latlng).setContent(content).openOn(map);
 
-                /*const panorama = new google.maps.StreetViewPanorama( //https://developers.google.com/maps/documentation/javascript/streetview?hl=it
-                    document.getElementById("GoogleStreetView"), //<div style="height: 200px" id="GoogleStreetView"></div>
-                    {
-                        position: { lat, lng },
-                        linksControl: false,
-                        panControl: false,
-                        enableCloseButton: false,
-                        zoomControl: false,
-                        fullscreenControl: false,
-                        addressControl: false,
-                    },
-                );*/
+                    /*const panorama = new google.maps.StreetViewPanorama( //https://developers.google.com/maps/documentation/javascript/streetview?hl=it
+                        document.getElementById("GoogleStreetView"), //<div style="height: 200px" id="GoogleStreetView"></div>
+                        {
+                            position: { lat, lng },
+                            linksControl: false,
+                            panControl: false,
+                            enableCloseButton: false,
+                            zoomControl: false,
+                            fullscreenControl: false,
+                            addressControl: false,
+                        },
+                    );*/
                 } catch (error) {
                     console.error(error);
                 }
