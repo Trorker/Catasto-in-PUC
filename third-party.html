@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- translate="no" -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strumenti di terze parti - Catasto in PUC</title>
+    <meta name="description" content="Semplifica l'accesso alle Mappe Catastali">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Catasto in PUC">
+    <meta property="og:description" content="Semplifica l'accesso alle Mappe Catastali">
+    <meta property="og:url" content="https://trorker.github.io/Catasto-in-PUC/">
+    <meta property="og:image" content="https://trorker.github.io/Catasto-in-PUC/resources/img/favicon.png">
+
+    <meta name="keywords" content="XYZ" />
+    <meta name="robots" content="index, follow" />
+
+    <!--<base href="/Catasto-in-PUC/">-->
+
+    <link rel="shortcut icon" href="resources/img/favicon.png">
+
+    <!-- Pico.css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+    <!-- Custom styles for this example -->
+    <link rel="stylesheet" href="resources/css/styles.css" />
+
+    <!-- Alphine JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- https://feathericons.com/?query=lin -->
+    <!-- https://basicons.xyz/ -->
+
+    <!-- Material-symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+
+<body>
+    <!-- NavBar -->
+    <div class="noselect">
+        <dialog id="navbar-modal">
+            <article>
+                <a href="#close" aria-label="Close" class="close" data-target="navbar-modal"
+                    onClick="toggleModal(event)"></a>
+                <main>
+                    <a href="/" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">
+                        <span class="notranslate material-symbols-outlined">home</span>
+                    </a>
+                    <a href="index.html#intro" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">Introduzione</a>
+                    <a href="index.html#features" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">Caratteristiche</a>
+                    <a href="index.html#installation" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">Installazione</a>
+                    <a href="index.html#feedback" role="button" class="secondary outline" data-target="navbar-modal"
+                        onclick="toggleModal(event, false)">Feedback</a>
+                </main>
+                <footer>
+                    <small>
+                        Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
+                    </small>
+                </footer>
+            </article>
+        </dialog>
+        <nav id="navbar" class="container-fluid sticky">
+            <ul>
+                <li>
+                    <a href="index.html" class="contrast">
+                        <kbd><small>Catasto in PUC</small></kbd>
+                    </a>
+                </li>
+            </ul>
+            <ul class="s-hide">
+                <li><a href="index.html#intro">Introduzione</a></li>
+                <li><a href="index.html#features">Caratteristiche</a></li>
+                <li><a href="index.html#installation">Installazione</a></li>
+                <li><a href="index.html#feedback">Feedback</a></li>
+            </ul>
+            <ul>
+                <!--<li>
+                    <a href="#" icon-theme-switcher- class="contrast">
+                        <span class="icon-moon"></span>
+                    </a>
+                </li>-->
+                <li> <!-- <input type="checkbox" theme-switcher role="switch" /> -->
+                    <a href="#" icon-theme-switcher class="contrast">
+                        <span class="notranslate material-symbols-outlined">fiber_manual_record</span>
+                    </a>
+                </li>
+                <li class="s-show">
+                    <!-- Button to trigger the modal -->
+                    <a href="#" class="contrast" data-target="navbar-modal" onClick="toggleModal(event)">
+                        <span class="notranslate material-symbols-outlined">menu</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Page -->
+    <main>
+        <!-- License -->
+        <section id="license">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li>Strumenti di terze parti</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="container">
+                <hgroup>
+                    <h3>Strumenti di terze parti</h3>
+                    <p>Strumenti e risorse di terze parti pertinenti da cui dipendiamo.</p>
+                </hgroup>
+                <p>Gli strumenti e le risorse di terze parti sono componenti fondamentali di molti processi e progetti
+                    in cui ci impegniamo. Si tratta di software, servizi online e altre risorse che utilizziamo per
+                    arricchire e migliorare le nostre attività. Dipendiamo da questi strumenti perchè ci permettono di
+                    ottimizzare i nostri risultati, risparmiare tempo prezioso e raggiungere i nostri obiettivi in modo
+                    più efficace.</p>
+                <div>
+                    <hgroup>
+                        <h4>Sito web</h4>
+                        <p>Gli strumenti di terze parti che rendono il nostro sito web unico e funzionale.</p>
+                    </hgroup>
+                    <ul>
+                        <li>
+                            <a href="https://picocss.com/">Pico.css</a><span>: un framework CSS minimale progettato per HTML semantico.</span>
+                            <span>(con licenza <a href="https://github.com/picocss/pico/blob/master/LICENSE.md"
+                                    class="secondary">MIT</a>)</span>
+                        </li>
+                        <li>
+                            <a href="https://fonts.google.com/icons">Google Material Symbols</a><span>: raccolta di icone Material di Google.</span>
+                            <span>(con licenza <a href="https://www.apache.org/licenses/LICENSE-2.0.html"
+                                    class="secondary">Apache License 2.0</a>)</span>
+                        </li>
+                        <li>
+                            <a href="https://alpinejs.dev/">Alpine.js</a><span>: un framework JavaScript leggero per automatizzare piccole interazioni e funzioni nel sito web.</span>
+                            <span>(con licenza <a href="https://github.com/alpinejs/alpine/blob/main/LICENSE.md"
+                                    class="secondary">MIT</a>)</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <hgroup>
+                        <h4>Script Catasto in PUC</h4>
+                        <p>Una panoramica degli strumenti e delle risorse di terze parti essenziali per il nostro script.</p>
+                    </hgroup>
+                    <ul>
+                        <li>
+                            <a href="https://sweetalert2.github.io/">Sweetalert2</a><span>: fornisce una sostituzione delle classiche finestre popup.</span>
+                            <span>(con licenza <a href="https://github.com/sweetalert2/sweetalert2/blob/main/LICENSE"
+                                    class="secondary">MIT</a>)</span>
+                        </li>
+                        <li>
+                            <a href="http://proj4js.org/">Proj4.js</a><span>: consente la trasformazione delle coordinate da un sistema di coordinate all'altro.</span>
+                            <span>(con licenza <a href="https://github.com/proj4js/proj4js/blob/master/LICENSE.md"
+                                    class="secondary">MIT</a>)</span>
+                        </li>
+                        <li>
+                            <a href="https://kartena.github.io/Proj4Leaflet/">Proj4Leaflet</a><span>: plugin per Leaflet che supporta proiezioni e riferimenti geografici.</span>
+                            <span>(con licenza <a href="https://github.com/kartena/Proj4Leaflet/blob/master/LICENSE"
+                                    class="secondary">BSD-2-Clause license</a>)</span>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Trorker/Catasto-in-PUC">vComparator.js</a><span>: consente di confrontare le versioni dello script.</span>
+                            <span>(con licenza <a href="https://github.com/Trorker/Catasto-in-PUC/blob/main/LICENSE"
+                                    class="secondary">MIT</a>)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="container-fluid"> <!-- https://alvarotrigo.com/blog/website-footers/ -->
+        <div class="container">
+            <div class="flex text-center noselect">
+                <div>
+                    <p>
+                        <a href="index.html" class="contrast">
+                            <kbd><small>Catasto in PUC</small></kbd>
+                        </a>
+                    </p>
+                    <hgroup>
+                        <h6>Follow Us</h6>
+                        <small>
+                            <ul class="list-icon">
+                                <li>
+                                    <a href="https://github.com/Trorker" target="_blank" aria-label="GitHub"
+                                        data-tooltip="GitHub">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-github">
+                                            <path
+                                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/trorker/" target="_blank" aria-label="Instagram"
+                                        data-tooltip="Instagram">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-instagram">
+                                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/ruslan-dzyuba/" target="_blank"
+                                        aria-label="LinkedIn" data-tooltip="LinkedIn">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-linkedin">
+                                            <path
+                                                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                            </path>
+                                            <rect x="2" y="9" width="4" height="12"></rect>
+                                            <circle cx="4" cy="4" r="2"></circle>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </small>
+                    </hgroup>
+                </div>
+                <div>
+                    <hgroup>
+                        <h6>Navigations Links</h6>
+                        <small>
+                            <ul class="list-link">
+                                <li><a href="index.html#intro">Introduzione</a></li>
+                                <li><a href="index.html#features">Caratteristiche</a></li>
+                                <li><a href="index.html#installation">Installazione</a></li>
+                                <li><a href="index.html#feedback">Feedback</a></li>
+                            </ul>
+                        </small>
+                    </hgroup>
+                </div>
+                <div>
+                    <hgroup>
+                        <h6>Useful Links</h6>
+                        <small>
+                            <ul class="list-link">
+                                <li>
+                                    <a href="for-the-curious.html">Per i più Curiosi</a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/Trorker/Catasto-in-PUC" class="external-link"
+                                        target="_blank">GitHub Repository</a>
+                                </li>
+                            </ul>
+                        </small>
+                    </hgroup>
+                </div>
+                <div>
+                    <hgroup>
+                        <h6>Support</h6>
+                        <small>
+                            <ul class="list-link">
+                                <!--<li><a href="#">Legal policy</a></li>-->
+                                <!--<li><a href="#">Status policy</a></li>-->
+                                <!--<li><a href="#">Privacy policy</a></li>-->
+                                <!--<li><a href="#">Terms of service</a></li>-->
+                                <li><a href="license.html">Code licensed MIT</a></li>
+                                <li><a href="third-party.html">Third-Party Tools</a></li>
+                                <!--<li><a href="https://picocss.com/third-party/">Third-Party Tools</a></li>-->
+                            </ul>
+                        </small>
+                    </hgroup>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center" x-data="{ currentYear: `${new Date().getFullYear()}`}">
+                <small>
+                    Made by <a href="https://github.com/Trorker" class="secondary">Ruslan Dzyuba</a>
+                    <br>
+                    Copyright © <span x-text="currentYear">2023</span> - All rights reserved
+                </small>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        const switchers = document.querySelectorAll("input[theme-switcher]");
+        switchers.forEach((switcher) => {
+            switcher.checked = (localStorage.getItem('picoPreferredColorScheme') || false) == 'dark' ? true : false;
+        });
+    </script>
+    <script src="resources/js/command.js"></script>
+    <script src="resources/js/library/minimal-theme-switcher.js"></script>
+    <script src="resources/js/iconEmbed.js"></script>
+    <script src="resources/js/library/modal.js"></script>
+</body>
+
+</html>
