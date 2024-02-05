@@ -15,6 +15,10 @@
 // @require     https://trorker.github.io/Catasto-in-PUC/resources/js/library/vComparator.js
 // ==/UserScript==
 
+/*
+1.1.3: [fix] Sistemato finsetra About aggiungendo link per il sito web
+*/
+
 (function () { // @grant       GM_openInTab
     'use strict';
 
