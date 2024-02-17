@@ -17,6 +17,7 @@
 
 /*
 1.1.3: [fix] Sistemato finsetra About aggiungendo link per il sito web
+//https://photon.komoot.io/
 */
 
 (function () { // @grant       GM_openInTab
