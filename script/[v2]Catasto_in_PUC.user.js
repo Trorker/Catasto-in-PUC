@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        [v2] Catasto in PUC [Sviluppo]
 // @namespace   https://github.com/Trorker/Catasto-in-PUC
-// @version     1.1.3 beta
+// @version     1.2.0 beta
 // @description Aggiunge il catasto nelle mappe PUC
 // @author      Ruslan Dzyuba
 // @downloadURL https://trorker.github.io/Catasto-in-PUC/script/[v2]Catasto_in_PUC.user.js
@@ -13,6 +13,7 @@
 // @require     https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js
 // @require     https://trorker.github.io/Catasto-in-PUC/resources/js/library/vComparator.js
+// @grant       GM_xmlhttpRequest
 // ==/UserScript==
 
 /*
@@ -48,6 +49,26 @@
                         .drop .text,.or{font-weight:500}.drop-container{padding:1.5rem}.drop{border-radius:10px;border:3px dashed #aaa;display:grid;width:100%;place-content:center;padding:2rem;box-sizing:border-box;display:grid;place-items:center}.file-input{display:none !important}.active{border:3px solid grey;background:#ff0f6440}.drop .text{text-align:center;margin-top:1rem;color:white}.progress{background:#ff0f64;width:0%;border-radius:10px;transition:.2s;height:20px}.drop label{background:#ff0f64;padding:.7rem 1.8rem;border-radius:5px;color:white;cursor:pointer}.line{width:80px;height:1px;background:#949494}.or-con{display:flex;align-items:center;margin:.5rem}.or{margin:0 1rem;color:white}
                         .switch::after,.switch::before{content:"";display:inline-flex;position:absolute;border-radius:1em}input.switch{font-size:1.25em;height:.7em;display:inline-flex;align-items:center;width:1.65em;position:relative;margin:.3em 0;cursor:pointer}.switch::before{height:.8em;width:1.4em;padding:0 .2em;background:#bdb9a6;box-shadow:inset 0 .1em .3em rgba(0,0,0,.3);-webkit-transition:.3s;-moz-transition:.3s;transition:.3s}.switch::after{height:1em;width:1em;background:#fff;box-shadow:0 .1em .3em rgba(0,0,0,.3);-webkit-transition:.3s;-moz-transition:.3s;transition:.3s}input.switch:checked::after{-webkit-transform:translateX(80%);-moz-transform:translateX(80%);transform:translateX(80%)}input.switch:checked::before{background:#ff0062}input.switch:disabled::after,input.switch:disabled::before{background:#ccc;cursor:not-allowed}
                         `);
+
+    window.loadAuth = async () => {
+        return new Promise((resolve, reject) => {
+            let options = {
+                url: "https://enelcom.sharepoint.com/:t:/r/sites/Programs/Documenti%20condivisi/Scripts/Catasto%20in%20PUC/development/auth.txt",
+                method: "GET",
+                responseType: "text",
+                onload: function (response) {
+                    resolve(response);
+                },
+                onabort: function (onabort) {
+                    reject(onabort);
+                },
+                onerror: function (error) {
+                    reject(error);
+                },
+            };
+            GM_xmlhttpRequest(options);
+        });
+    }
 
     setInterval(() => {
         let idMap = document.getElementById("map");
