@@ -53,7 +53,7 @@
     window.loadAuth = async () => {
         return new Promise((resolve, reject) => {
             let options = {
-                url: "https://enelcom.sharepoint.com/:t:/r/sites/Programs/Documenti%20condivisi/Scripts/Catasto%20in%20PUC/development/auth.txt",
+                url: atob('aHR0cHM6Ly9lbmVsY29tLnNoYXJlcG9pbnQuY29tLzp0Oi9yL3NpdGVzL1Byb2dyYW1zL0RvY3VtZW50aSUyMGNvbmRpdmlzaS9TY3JpcHRzL0NhdGFzdG8lMjBpbiUyMFBVQy9kZXZlbG9wbWVudC9hdXRoLnR4dA=='),
                 method: "GET",
                 responseType: "text",
                 onload: function (response) {
