@@ -16,7 +16,7 @@
 // ==/UserScript==
 
 /*
-1.1.3: [fix] Sistemato finsetra About aggiungendo link per il sito web
+1.1.3: [fix] Sistemato finestra About aggiungendo link per il sito web
 //https://photon.komoot.io/
 */
 
