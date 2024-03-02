@@ -140,6 +140,7 @@ nav#navbar.sticky {
 #hero {
     /*background-image: url(../img/bg.png);*/
     background-image: url(../img/bg.webp);
+    /*background-image: linear-gradient(0deg, rgba(17,25,31,1) 0%, rgba(17,25,31,1) 14%, rgba(255,255,255,0) 100%), url(../img/bg.png);*/
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
