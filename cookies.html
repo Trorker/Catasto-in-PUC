@@ -272,6 +272,10 @@
                 setCookie(name, value, expiryDays);
             }
 
+            const getCookieValue = (name) => (
+                document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
+            )
+
             // Function to set a cookie
             function setCookie(name, value, expiryDays) {
                 var expiryDate = new Date();
