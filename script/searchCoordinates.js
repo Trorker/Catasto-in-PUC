@@ -21,8 +21,8 @@ let url = "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/
 
 fetch(url, {
     method: "GET",
-    mode: "cors", // same-origin, no-cors
-    credentials: "include", //same-origin, omit, include
+    mode: "cors", // cors, same-origin, no-cors
+    credentials: "same-origin", //same-origin, omit, include
 }).then(response => {
     if (!response.ok) {
         throw new Error("Errore nella richiesta: " + response.status);
@@ -36,56 +36,16 @@ fetch(url, {
     console.log(response.headers.get('Set-Cookie'));
 
 
-    // Gestisci la risposta qui, ad esempio leggendo il corpo dell'immagine
+    response.blob().then((blob) => {
+        const imageUrl = URL.createObjectURL(blob);
+        const image = document.getElementById('imgCaptcha');
+        image.src = imageUrl;
+    }).catch((error) => {
+        console.error("Errore durante la lettura del Blob:", error);
+    });
 }).catch(error => {
     console.error("Si è verificato un errore:", error);
 });
-
-
-// Funzione per inviare una richiesta HTTP e ottenere i cookie
-function getCookies(url) {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.withCredentials = true;
-      xhr.open('GET', url, true);
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-            console.log(xhr.getResponseHeader("Cookie"));
-          const cookies = xhr.responseText.match(/Set-Cookie: (.*?);/g);
-          if (cookies) {
-            resolve(cookies);
-          } else {
-            reject('Nessun cookie trovato nella risposta');
-          }
-        } else {
-          reject(`Errore durante la richiesta: ${xhr.status}`);
-        }
-      };
-      xhr.onerror = () => {
-        reject('Errore di rete');
-      };
-      xhr.send();
-    });
-  }
-  
-  // Esempio di utilizzo
-  getCookies(url).then((cookies) => {
-    console.log(cookies); // Stampa un array di stringhe con i cookie
-  }).catch((error) => {
-    console.error(error);
-  });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
