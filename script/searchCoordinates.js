@@ -14,6 +14,9 @@
 //getCookies: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search
 //getCaptcha: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it
 
+//https://gist.github.com/jfromaniello/4087861
+//https://gist.github.com/killmenot/9976859
+
 let url = "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it";
 
 fetch(url, {
