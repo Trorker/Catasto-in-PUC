@@ -19,7 +19,7 @@ let _url = "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv
 fetch(_url, {
     method: "GET",
     mode: "cors", // same-origin, no-cors
-    credentials: "same-origin", // omit, include
+    credentials: "include", //same-origin, omit, include
 }).then(response => {
     if (!response.ok) {
         throw new Error("Errore nella richiesta: " + response.status);
