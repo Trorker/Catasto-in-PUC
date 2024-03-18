@@ -4,8 +4,8 @@
 // @version     1.1.2 alpha
 // @description Aggiunge il catasto nelle mappe PUC
 // @author      Ruslan Dzyuba
-// @downloadURL https://trorker.github.io/Catasto-in-PUC/script/Catasto_in_PUC.user.js
-// @updateURL   https://trorker.github.io/Catasto-in-PUC/script/Catasto_in_PUC.user.js
+// @downloadURL https://ruslan-dzyuba.it/Catasto-in-PUC/script/Catasto_in_PUC.user.js
+// @updateURL   https://ruslan-dzyuba.it/Catasto-in-PUC/script/Catasto_in_PUC.user.js
 // @match       https://*u*-it*.*ne*i*t.*/E*i*R*te/*
 // @match       https://*u*-it*.*ne*i*t.*/p3/#/P3?*
 // @icon        https://ruslan-dzyuba.it/Catasto-in-PUC/resources/img/Catasto_in_PUC.logo.svg
