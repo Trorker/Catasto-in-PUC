@@ -38,3 +38,71 @@ fetch(url, {
     console.error("Si è verificato un errore:", error);
 });
 
+
+
+//https://help.opendatasoft.com/apis/csw/#csw-api
+//https://gn.mase.gov.it/portale/servizio-di-ricerca-csw#:~:text=Cos'%C3%A8%20un%20servizio%20di%20ricerca%20CSW&text=Il%20CSW%20(Catalog%20Service%20for,software%20per%20la%20loro%20fruizione.
+//https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search#/links
+//https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw?SERVICE=CSW&VERSION=2.0.2&REQUEST=GetCapabilities
+
+//https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw?SERVICE=CSW&VERSION=2.0.2&REQUEST=GetRecords&QUERY=title:modena&typeNames=csw:Record
+//https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw?SERVICE=CSW&VERSION=2.0.2&REQUEST=GetRecords&typeNames=csw:Record&resultType=results&ElementSetName=full
+
+fetch('https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw', {
+    method: 'GET',
+})
+    .then(response => response.text())
+    .then(xmlText => {
+        // Analizza il documento XML qui
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        // Ora puoi navigare nel documento XML e estrarre le informazioni necessarie
+        console.log(xmlDoc);
+    })
+    .catch(error => {
+        console.error('Si è verificato un errore:', error);
+    });
+
+
+
+
+/*
+fetch('https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw')
+  .then(response => response.text())
+  .then(xmlText => {
+    // Analizza il documento XML della risposta
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+    // Trova e stampa le informazioni di ServiceIdentification
+    const serviceIdentification = xmlDoc.querySelector('ows\\:ServiceIdentification');
+    const title = serviceIdentification.querySelector('ows\\:Title').textContent;
+    const abstract = serviceIdentification.querySelector('ows\\:Abstract').textContent;
+    console.log('Titolo del servizio:', title);
+    console.log('Abstract del servizio:', abstract);
+
+    // Trova e stampa le informazioni di ServiceProvider
+    const serviceProvider = xmlDoc.querySelector('ows\\:ServiceProvider');
+    const providerName = serviceProvider.querySelector('ows\\:ProviderName').textContent;
+    console.log('Provider del servizio:', providerName);
+
+    // Trova e stampa le informazioni sulle operazioni supportate
+    const operations = xmlDoc.querySelectorAll('ows\\:Operation');
+    console.log('Operazioni supportate:');
+    operations.forEach(operation => {
+      const operationName = operation.getAttribute('name');
+      console.log('-', operationName);
+    });
+
+    // Trova e stampa i queryable supportati
+    const queryables = xmlDoc.querySelectorAll('ows\\:Parameter[name="sections"] ows\\:Value');
+    console.log('Queryable supportati:');
+    queryables.forEach(queryable => {
+      console.log('-', queryable.textContent);
+    });
+  })
+  .catch(error => {
+    console.error('Si è verificato un errore durante il recupero delle capacità:', error);
+  });
+
+*/
