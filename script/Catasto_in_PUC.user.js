@@ -8,7 +8,7 @@
 // @updateURL   https://trorker.github.io/Catasto-in-PUC/script/Catasto_in_PUC.user.js
 // @match       https://*u*-it*.*ne*i*t.*/E*i*R*te/*
 // @match       https://*u*-it*.*ne*i*t.*/p3/#/P3?*
-// @icon        https://trorker.github.io/Catasto-in-PUC/resources/img/Catasto_in_PUC.logo.svg
+// @icon        https://ruslan-dzyuba.it/Catasto-in-PUC/resources/img/Catasto_in_PUC.logo.svg
 // @require     https://cdn.jsdelivr.net/npm/sweetalert2@11
 // @require     https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js
