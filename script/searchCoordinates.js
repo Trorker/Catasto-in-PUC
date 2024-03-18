@@ -14,9 +14,9 @@
 //getCookies: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search
 //getCaptcha: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it
 
-let url = "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search";
+let _url = "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it";
 
-fetch(url, {
+fetch(_url, {
     method: "GET",
     mode: "cors", // same-origin, no-cors
     credentials: "same-origin", // omit, include
@@ -37,6 +37,54 @@ fetch(url, {
 }).catch(error => {
     console.error("Si è verificato un errore:", error);
 });
+
+
+// Funzione per inviare una richiesta HTTP e ottenere i cookie
+function getCookies(url) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+      xhr.open('GET', url, true);
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+            console.log(xhr.getResponseHeader("Cookie"));
+          const cookies = xhr.responseText.match(/Set-Cookie: (.*?);/g);
+          if (cookies) {
+            resolve(cookies);
+          } else {
+            reject('Nessun cookie trovato nella risposta');
+          }
+        } else {
+          reject(`Errore durante la richiesta: ${xhr.status}`);
+        }
+      };
+      xhr.onerror = () => {
+        reject('Errore di rete');
+      };
+      xhr.send();
+    });
+  }
+  
+  // Esempio di utilizzo
+  const url = 'https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it';
+  getCookies(url).then((cookies) => {
+    console.log(cookies); // Stampa un array di stringhe con i cookie
+  }).catch((error) => {
+    console.error(error);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
