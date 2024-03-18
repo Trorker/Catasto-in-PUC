@@ -14,9 +14,9 @@
 //getCookies: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search
 //getCaptcha: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it
 
-let _url = "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it";
+let url = "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it";
 
-fetch(_url, {
+fetch(url, {
     method: "GET",
     mode: "cors", // same-origin, no-cors
     credentials: "include", //same-origin, omit, include
@@ -66,7 +66,6 @@ function getCookies(url) {
   }
   
   // Esempio di utilizzo
-  const url = 'https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it';
   getCookies(url).then((cookies) => {
     console.log(cookies); // Stampa un array di stringhe con i cookie
   }).catch((error) => {
