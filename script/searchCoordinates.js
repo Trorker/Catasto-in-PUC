@@ -41,6 +41,7 @@ fetch(url, {
 
 
 //https://help.opendatasoft.com/apis/csw/#csw-api
+//https://geodati.gov.it/geoportale/manuale-rndt
 //https://gn.mase.gov.it/portale/servizio-di-ricerca-csw#:~:text=Cos'%C3%A8%20un%20servizio%20di%20ricerca%20CSW&text=Il%20CSW%20(Catalog%20Service%20for,software%20per%20la%20loro%20fruizione.
 //https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search#/links
 //https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw?SERVICE=CSW&VERSION=2.0.2&REQUEST=GetCapabilities
