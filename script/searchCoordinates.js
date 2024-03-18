@@ -49,7 +49,7 @@ fetch(url, {
 //https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw?SERVICE=CSW&VERSION=2.0.2&REQUEST=GetRecords&QUERY=title:modena&typeNames=csw:Record
 //https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw?SERVICE=CSW&VERSION=2.0.2&REQUEST=GetRecords&typeNames=csw:Record&resultType=results&ElementSetName=full
 
-fetch('https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw?SERVICE=CSW&VERSION=2.0.2&REQUEST=GetRecords&typeNames=csw:Record&resultType=results&ElementSetName=full', {
+/*fetch('https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw?SERVICE=CSW&VERSION=2.0.2&REQUEST=GetRecords&typeNames=csw:Record&resultType=results&ElementSetName=full', {
     method: 'GET',
 })
     .then(response => response.text())
@@ -62,7 +62,7 @@ fetch('https://csw.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/csw?SER
     })
     .catch(error => {
         console.error('Si è verificato un errore:', error);
-    });
+    });*/
 
 
 
