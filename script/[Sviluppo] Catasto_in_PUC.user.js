@@ -18,7 +18,9 @@
 
 /*
 1.1.3: [fix] Sistemato finestra "About" aggiungendo link per il sito web
-//https://photon.komoot.io/
+
+1.1.X: [add] Aggiungere le "News" aggiungendo un file esterno JSON dove va a pescare le notizie
+1.1.X: [add] Aggiungere la ricerca https://photon.komoot.io/
 */
 
 (function () { // @grant       GM_openInTab
