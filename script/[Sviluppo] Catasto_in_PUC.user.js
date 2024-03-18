@@ -279,6 +279,7 @@
                                   <i>Version:&nbsp;${ScriptInfo.version}&nbsp;</i><br>
                                   <a href="https://trorker.github.io/Catasto-in-PUC/" style="text-decoration: none;" target="_blank"><i>Web Site</i></a><br>
                                   <span class="link" onclick="window.OpenSource()"><i>Open-Source resources used</i></span><br>
+                                  <span class="link" onclick="window.qrCode()"><i>QrCode</i></span><br>
                                   <span class="link" onclick="window.License()"><i>License</i></span>
                               </div><br><br>
                               `,
