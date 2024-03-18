@@ -247,7 +247,7 @@
                     }).catch(error => { /*Swal.showValidationMessage(`Request failed: ${error}`);*/
                         console.error(`Request failed: ${error}`);
                     });
-                window.Swal.update({
+                window.Swal.update({ //(<span class="link" onclick="window.Update()">releas notes</span>)
                     title: 'About us',
                     html: `
                               <h3>
@@ -255,7 +255,8 @@
                                   <i>by&nbsp;&nbsp;</i><a href="https://github.com/trorker" target="_blank"><b>${ScriptInfo.author}</b></a>
                               </h3>
                               <div style="font-size: 0.8em">
-                                  <i>Version:&nbsp;${ScriptInfo.version}&nbsp;(<span class="link" onclick="window.Update()">releas notes</span>)</i><br>
+                                  <i>Version:&nbsp;${ScriptInfo.version}&nbsp;</i><br>
+                                  <a href="https://trorker.github.io/Catasto-in-PUC/" style="text-decoration: none;" target="_blank"><i>Web Site</i></a><br>
                                   <span class="link" onclick="window.OpenSource()"><i>Open-Source resources used</i></span><br>
                                   <span class="link" onclick="window.License()"><i>License</i></span>
                               </div><br><br>
