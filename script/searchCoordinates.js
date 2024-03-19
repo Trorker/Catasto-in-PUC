@@ -9,7 +9,7 @@
 //https://wms.cartografia.agenziaentrate.gov.it/inspire/ajax/ajax.php?op=getFogli&prov=MO&cod_com=C398&tkn=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 //https://wms.cartografia.agenziaentrate.gov.it/inspire/ajax/ajax.php?op=getParts&prov=MO&cod_com=C398&foglio=1&tkn=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-
+//https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha&type=check&captcha=&jsessionid=
 
 //getCookies: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search
 //getCaptcha: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it
@@ -47,6 +47,7 @@ fetch(url, {
     console.error("Si è verificato un errore:", error);
 });
 
+//https://catastomappe.it/mappa.php
 
 
 
