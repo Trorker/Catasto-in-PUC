@@ -129,18 +129,15 @@
                     </button>
                     <!-- Captcha -->
                     <!--<iframe src="https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it" frameborder="0"></iframe>-->
-                    <form action="https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha" method="get">
                         <div class="grid">
                             <img id="imgCaptcha" alt="Captcha">
                             <label for="Captcha">
                                 Captcha:
                                 <input type="text" id="Captcha" name="captcha" placeholder="Captcha" required>
                             </label>
-                            <input type="type" id="type" name="type" value="check">
 
-                            <button type="submit">Submit</button>
+                            <button type="button" onclick="sendCaptcha()">Submit</button>
                         </div>
-                    </form>
                 </div>
             </section>
 
