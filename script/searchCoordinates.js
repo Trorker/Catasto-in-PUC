@@ -20,32 +20,62 @@
 let url = "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it";
 
 fetch(url, {
-    method: "GET",
-    mode: "cors", // cors, same-origin, no-cors
-    credentials: "same-origin", //same-origin, omit, include
+  method: "GET",
+  mode: "cors", // cors, same-origin, no-cors
+  credentials: "same-origin", //same-origin, omit, include
 }).then(response => {
-    if (!response.ok) {
-        throw new Error("Errore nella richiesta: " + response.status);
-    }
-    console.log(response);
+  if (!response.ok) {
+    throw new Error("Errore nella richiesta: " + response.status);
+  }
+  console.log(response);
 
 
-    // Ottenere il valore del cookie JSESSIONID dalla risposta
-    console.log(response.headers.getSetCookie('set-cookie'));
-    console.log(response.headers.get('set-cookie'));
-    console.log(response.headers.get('Set-Cookie'));
+  // Ottenere il valore del cookie JSESSIONID dalla risposta
+  console.log(response.headers.getSetCookie('set-cookie'));
+  console.log(response.headers.get('set-cookie'));
+  console.log(response.headers.get('Set-Cookie'));
 
 
-    response.blob().then((blob) => {
-        const imageUrl = URL.createObjectURL(blob);
-        const image = document.getElementById('imgCaptcha');
-        image.src = imageUrl;
-    }).catch((error) => {
-        console.error("Errore durante la lettura del Blob:", error);
-    });
+  response.blob().then((blob) => {
+    const imageUrl = URL.createObjectURL(blob);
+    const image = document.getElementById('imgCaptcha');
+    image.src = imageUrl;
+  }).catch((error) => {
+    console.error("Errore durante la lettura del Blob:", error);
+  });
 }).catch(error => {
-    console.error("Si è verificato un errore:", error);
+  console.error("Si è verificato un errore:", error);
 });
+
+window.sendCaptcha = () => {
+  let captcha = document.querySelector("#Captcha").value;
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=check&captcha=" + captcha, true);
+  xhr.withCredentials = false;
+  xhr.send(null);
+  xhr.onload = function () {
+    if (xhr.status != 200) {
+      console.log(`Error ${xhr.status}: ${xhr.statusText}`);
+    } else {
+      console.log(xhr);
+    }
+  };
+}
+
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it", true);
+xhr.withCredentials = false;
+xhr.send(null);
+xhr.onload = function () {
+  if (xhr.status != 200) { // analizza lo status HTTP della risposta
+    console.log(`Error ${xhr.status}: ${xhr.statusText}`); // ad esempio 404: Not Found
+  } else { // mostra il risultato
+    console.log(`Done, got ${xhr.response.length} bytes`); // response contiene la risposta del server
+    console.log(xhr);
+    console.log(xhr.getResponseHeader('set-cookie'));
+    console.log(xhr.getAllResponseHeaders());
+  }
+};
 
 //https://catastomappe.it/mappa.php
 
