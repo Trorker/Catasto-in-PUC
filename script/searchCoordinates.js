@@ -9,13 +9,20 @@
 //https://wms.cartografia.agenziaentrate.gov.it/inspire/ajax/ajax.php?op=getFogli&prov=MO&cod_com=C398&tkn=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 //https://wms.cartografia.agenziaentrate.gov.it/inspire/ajax/ajax.php?op=getParts&prov=MO&cod_com=C398&foglio=1&tkn=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-//https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha&type=check&captcha=&jsessionid=
+//https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=check&captcha=&jsessionid=
 
 //getCookies: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search
 //getCaptcha: https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it
 
 //https://gist.github.com/jfromaniello/4087861
 //https://gist.github.com/killmenot/9976859
+
+
+//https://www.geopoi.it/geopoin/php/getData.php?_serv=map
+let jws = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mjk0NDM2MjAsImVpZCI6Mjk0NDM2MTksImxpZCI6ImJkZDMxODNmYTRiYmRjMWRjN2ZiNTg0MTM1Yzk1MGI3NzY4YmQ4YzYiLCJkIjp7InBwIjp0cnVlfSwicGYiOmZhbHNlLCJleHAiOjE3MTA4NTU4MjQsIm1leHAiOjE3MTA5NDA0MjR9.0Y_1DZ5TqVNwRe_rPpC13M08VgsWWzEN4kg7wn2C8IM";
+jws.split(".").map((jws) => {
+  console.log(JSON.parse(window.atob(jws)));
+})
 
 let url = "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/Captcha?type=image&lang=it";
 
