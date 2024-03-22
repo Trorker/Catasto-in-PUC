@@ -294,3 +294,16 @@ footer .flex>div {
         flex-basis: 100%;
     }
 }
+
+.stamp-deprecated {
+    background-color: rgb(from var(--code-kbd-color) r g b / 80%);
+    bottom: 40%;
+    right: -10%;
+    transform: rotate(-30deg);
+    font-size: .5rem;
+    padding: .1rem;
+    position: absolute;
+    text-transform: uppercase;
+    border: red 1px solid;
+    color: red;
+}
