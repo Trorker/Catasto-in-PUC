@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Catasto in PUC
 // @namespace   https://github.com/Trorker/Catasto-in-PUC
-// @version     1.1.2 alpha
+// @version     1.1.3 beta
 // @description Aggiunge il catasto nelle mappe PUC
 // @author      Ruslan Dzyuba
 // @downloadURL https://ruslan-dzyuba.it/Catasto-in-PUC/script/Catasto_in_PUC.user.js
@@ -435,6 +435,16 @@
 
                         global_map.tileOverlays.gisOverlay.proprietary_tileOverlay.bringToFront(); //BETA add in 1.0.6
 
+
+                            window.News.fire({
+                                icon: 'info',
+                                title: 'Sospensione dello script delle mappe catastali: integrazione ufficiale sulla piattaforma cartografica PUC'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    const dataUrl = "https://ruslan-dzyuba.it/Catasto-in-PUC/deprecated.html";
+                                    window.open(dataUrl, '_blank').focus();
+                                }
+                            });
 
                         if (new Date().getTime() <= new Date("2023-11-10T23:59:59.000Z").getTime() && !localStorage.getItem("isDismissed_News_Grid_People_Awards_2023")) {//add in 1.1.2
                             window.News.fire({
