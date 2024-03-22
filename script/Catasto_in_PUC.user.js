@@ -442,7 +442,8 @@
                                 title: 'il progetto “Mappe catastali in PUC” è stato candidato sulla piattaforma WeGrid all’interno di "Grid People Awards 2023"'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.open("https://wegrid.enel.com/it/component/zoo/item/nuovo-assunto-nuove-idee-nuova-mappa-74a8f3eda0", '_blank').focus();
+                                    const dataUrl = "aHR0cHM6Ly93ZWdyaWQuZW5lbC5jb20vaXQvY29tcG9uZW50L3pvby9pdGVtL251b3ZvLWFzc3VudG8tbnVvdmUtaWRlZS1udW92YS1tYXBwYS03NGE4ZjNlZGEw";
+                                    window.open(window.atob(dataUrl), '_blank').focus();
                                 }
                                 if (result.isDismissed) {
                                     localStorage.setItem("isDismissed_News_Grid_People_Awards_2023", true);
