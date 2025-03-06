@@ -1,19 +1,20 @@
 // ==UserScript==
 // @name        Catasto in PUC
 // @namespace   https://github.com/Trorker/Catasto-in-PUC
-// @version     1.1.3 beta
+// @version     1.2.0
 // @description Aggiunge il catasto nelle mappe PUC
 // @author      Ruslan Dzyuba
 // @downloadURL https://ruslan-dzyuba.it/Catasto-in-PUC/script/Catasto_in_PUC.user.js
 // @updateURL   https://ruslan-dzyuba.it/Catasto-in-PUC/script/Catasto_in_PUC.user.js
-// @match       https://*u*-it*.*ne*i*t.*/E*i*R*te/*
-// @match       https://*u*-it*.*ne*i*t.*/p3/#/P3?*
+// @include     https://*u*-it*.*ne*i*t.*/E*i*R*te/*
+// @include     https://*u*-it*.*ne*i*t.*/p3/#/P3?*
 // @icon        https://ruslan-dzyuba.it/Catasto-in-PUC/resources/img/Catasto_in_PUC.logo.svg
 // @require     https://cdn.jsdelivr.net/npm/sweetalert2@11
-// @require     https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js
-// @require     https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js
 // @require     https://trorker.github.io/Catasto-in-PUC/resources/js/library/vComparator.js
 // ==/UserScript==
+
+// @require     https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js
+// @require     https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js
 
 (function () { // @grant       GM_openInTab
     'use strict';
@@ -44,16 +45,47 @@
                         .switch::after,.switch::before{content:"";display:inline-flex;position:absolute;border-radius:1em}input.switch{font-size:1.25em;height:.7em;display:inline-flex;align-items:center;width:1.65em;position:relative;margin:.3em 0;cursor:pointer}.switch::before{height:.8em;width:1.4em;padding:0 .2em;background:#bdb9a6;box-shadow:inset 0 .1em .3em rgba(0,0,0,.3);-webkit-transition:.3s;-moz-transition:.3s;transition:.3s}.switch::after{height:1em;width:1em;background:#fff;box-shadow:0 .1em .3em rgba(0,0,0,.3);-webkit-transition:.3s;-moz-transition:.3s;transition:.3s}input.switch:checked::after{-webkit-transform:translateX(80%);-moz-transform:translateX(80%);transform:translateX(80%)}input.switch:checked::before{background:#ff0062}input.switch:disabled::after,input.switch:disabled::before{background:#ccc;cursor:not-allowed}
                         `);
 
-    setInterval(() => {
+    setInterval(async () => {
         let idMap = document.getElementById("map");
-        if (idMap && !idMap.getAttribute("exist") && window.global_map) {
+
+        /*unsafeWindow.global_map.maps.leaflet.whenReady(function(){
+            console.log('Map Loaded!');
+        });*/
+
+        if (idMap && !idMap.getAttribute("exist") && unsafeWindow.global_map) {
             idMap.setAttribute("exist", true);
+
+            //const { proj4 } = await import('https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js'); //https://mermaid.js.org/config/usage.html
+            await fetch('https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js')
+                .then(response => response.text())
+                .then(commits => {
+                //console.log(commits);
+                let e = document.createElement('script');
+                e.textContent = commits;
+                document.head.appendChild(e);
+            });
+
+            await fetch('https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js')
+                .then(response => response.text())
+                .then(commits => {
+                //console.log(commits);
+                let e = document.createElement('script');
+                e.textContent = commits;
+                document.body.appendChild(e);
+            });
+
+            //window.proj4 = proj4.default;
+
+            //const proj4leaflet = await import('https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js'); //https://mermaid.js.org/config/usage.html
+            //window.proj4 = proj4leaflet.default;
+
+            console.log('----Map Loaded!');
 
             console.log("Inject: ", GM_info.script.name, "-version: ", GM_info.script.version);
 
-            window.ScriptUpdate(GM_info.script);
+            //window.ScriptUpdate(GM_info.script);
 
-            window.loadMap(window.global_map.maps.leaflet);
+            window.loadMap(unsafeWindow.global_map.maps.leaflet);
         }
 
     }, 100);
@@ -70,7 +102,7 @@
         }
     });
 
-      window.News = window.Swal.mixin({
+    window.News = window.Swal.mixin({
         toast: true,
         position: 'top-end',
         //showConfirmButton: false,
@@ -95,49 +127,49 @@
         fetch(script.updateURL)
             .then(response => response.text())
             .then((text) => {
-                const regex = /\/\/\s+@version\s+(([0-9.]+)[\s+\w+](\w*))/i; // /\/\/\s+@version\s+((\d[+\.\d+])[\s+\w+](\w))/i
-                //console.log(text);
-                let vLoad = regex.exec(text) || null;
-                console.log(vLoad);
-                console.log(vComparator.getVersionType(vLoad[1]));
-                console.log(vComparator.compareSoftwareVersions(script.version, vLoad[1]));
+            const regex = /\/\/\s+@version\s+(([0-9.]+)[\s+\w+](\w*))/i; // /\/\/\s+@version\s+((\d[+\.\d+])[\s+\w+](\w))/i
+            //console.log(text);
+            let vLoad = regex.exec(text) || null;
+            console.log(vLoad);
+            console.log(vComparator.getVersionType(vLoad[1]));
+            console.log(vComparator.compareSoftwareVersions(script.version, vLoad[1]));
 
-                switch (vComparator.compareSoftwareVersions(script.version, vLoad[1])) {
-                    case (-1):
-                        // it's old version
-                        window.Swal.fire({
-                            title: script.name,
-                            icon: 'info',
-                            html: "C'è la nuova versione dello script.",
-                            showCancelButton: true,
-                            cancelButtonText: "Chiudi",
-                            confirmButtonText: 'Aggiorna',
-                            //allowOutsideClick: false,
-                            //preConfirm: (value) => { return false } //cancell event to clouse modal (click button confirm)
-                            footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                              var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
-                              new_window.onbeforeunload = () => { location.reload() }
-                            }
-                        });
-                        break;
-                    case (1):
-                        // it's new version
-                        localStorage.removeItem("isDismissed_News_Grid_People_Awards_2023"); //add in 1.1.2
-                        window.Swal.fire({
-                            icon: 'success',
-                            title: "Update Script " + script.name,
-                            text: 'Lo script è stato agiornato', //qui inserire le novitÃ . (esposrtarli in un nuova variabile)
-                            footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
-                        });
-                        break;
-                    default:
-                        // code block
-                        console.log("default");
-                }
+            switch (vComparator.compareSoftwareVersions(script.version, vLoad[1])) {
+                case (-1):
+                    // it's old version
+                    window.Swal.fire({
+                        title: script.name,
+                        icon: 'info',
+                        html: "C'è la nuova versione dello script.",
+                        showCancelButton: true,
+                        cancelButtonText: "Chiudi",
+                        confirmButtonText: 'Aggiorna',
+                        //allowOutsideClick: false,
+                        //preConfirm: (value) => { return false } //cancell event to clouse modal (click button confirm)
+                        footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
+                            new_window.onbeforeunload = () => { location.reload() }
+                        }
+                    });
+                    break;
+                case (1):
+                    // it's new version
+                    localStorage.removeItem("isDismissed_News_Grid_People_Awards_2023"); //add in 1.1.2
+                    window.Swal.fire({
+                        icon: 'success',
+                        title: "Update Script " + script.name,
+                        text: 'Lo script è stato agiornato', //qui inserire le novitÃ . (esposrtarli in un nuova variabile)
+                        footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
+                    });
+                    break;
+                default:
+                    // code block
+                    console.log("default");
+            }
 
-            })
+        })
             .catch(err => console.log(err))
 
         if (localStorage.getItem(script.name)) {
@@ -157,8 +189,8 @@
                         footer: '<span>Vuoi contattare lo sviluppatore</span>...manda una&nbsp;<a href="mailto:ruslan.dzyuba@e-distribuzione.com"> mail</a>',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                              var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
-                              new_window.onbeforeunload = () => { location.reload() }
+                            var new_window = window.open(script.updateURL + '?t=' + Date.now());//add in 1.1.2
+                            new_window.onbeforeunload = () => { location.reload() }
                         }
                     });
                     break;
@@ -234,19 +266,19 @@
                 window.Swal.showLoading();
                 await fetch(ScriptInfo.icon)
                     .then((response) => {
-                        if (!response.ok) throw new Error(response.statusText)
-                        return response.blob()
-                    })
+                    if (!response.ok) throw new Error(response.statusText)
+                    return response.blob()
+                })
                     .then((blob) => {
-                        Swal.update({
-                            imageUrl: URL.createObjectURL(blob),
-                            imageWidth: 100,
-                            imageHeight: 100,
-                            imageAlt: 'GitHub Avatar',
-                        });
-                    }).catch(error => { /*Swal.showValidationMessage(`Request failed: ${error}`);*/
-                        console.error(`Request failed: ${error}`);
+                    Swal.update({
+                        imageUrl: URL.createObjectURL(blob),
+                        imageWidth: 100,
+                        imageHeight: 100,
+                        imageAlt: 'GitHub Avatar',
                     });
+                }).catch(error => { /*Swal.showValidationMessage(`Request failed: ${error}`);*/
+                    console.error(`Request failed: ${error}`);
+                });
                 window.Swal.update({ //(<span class="link" onclick="window.Update()">releas notes</span>)
                     title: 'About us',
                     html: `
@@ -276,7 +308,7 @@
 
     window.loadMap = (map) => {
 
-        let EPSG_6706 = new window.L.Proj.CRS("EPSG:6706", "+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs", {
+        let EPSG_6706 = new unsafeWindow.L.Proj.CRS("EPSG:6706", "+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs", {
             resolutions: [8192, 4096, 2048, 1024, 512, 256, 128]
         });
 
@@ -340,31 +372,31 @@
                 document.body.style.cursor = "progress";
 
                 try {
-                                    //https://nominatim.openstreetmap.org/reverse?lat=<value>&lon=<value>&<params>
-                const nominatim = await window.getJsonURL(`https://nominatim.openstreetmap.org/reverse?lon=${lng}&lat=${lat}&format=json&accept-language=it`);
-                console.log(nominatim); //fare una funzione dove verifica la variabile, se non ÃƒÂ¨ definita ti restituise altro valore es.  nominatim.address.house_number | "Nan"
+                    //https://nominatim.openstreetmap.org/reverse?lat=<value>&lon=<value>&<params>
+                    const nominatim = await window.getJsonURL(`https://nominatim.openstreetmap.org/reverse?lon=${lng}&lat=${lat}&format=json&accept-language=it`);
+                    console.log(nominatim); //fare una funzione dove verifica la variabile, se non ÃƒÂ¨ definita ti restituise altro valore es.  nominatim.address.house_number | "Nan"
 
-                let datiCatasto = await window.getJsonURL(`https://wms.cartografia.agenziaentrate.gov.it/inspire/ajax/ajax.php?op=getDatiOggetto&lon=${lng}&lat=${lat}`);
-                console.log(datiCatasto);
+                    let datiCatasto = await window.getJsonURL(`https://wms.cartografia.agenziaentrate.gov.it/inspire/ajax/ajax.php?op=getDatiOggetto&lon=${lng}&lat=${lat}`);
+                    console.log(datiCatasto);
 
-                //https://stackoverflow.com/questions/387942/google-street-view-url
-                //http://web.archive.org/web/20110903160743/http://mapki.com/wiki/Google_Map_Parameters#Street_View
-                //https://maps.google.com/maps?q=barcelona&amp;aq=f&amp;ie=UTF8&amp;hl=es&amp;hq=&amp;hnear=Barcelona,+Catalu%C3%B1a&amp;ll=41.385064,2.173404&amp;spn=0.32884,0.727158&amp;t=h&amp;z=11&amp;layer=c&amp;cbll=41.384233,2.177893&amp;panoid=cHQCwlORibRoxMqj2m9IVg&amp;cbp=12,0,,0,0&amp;source=embed&amp;output=svembed
-                //https://maps.google.com/maps?layer=c&amp;cbll={latitude},{longitude}&amp;cbp=,{bearing},{tilt},{zoom},{pitch}&amp;source=embed&amp;output=svembed
-                //const url = `https://maps.google.com/maps?layer=c&amp;cbll=${lat + ", " + lng}&amp;cbp=12,0,0,0,0&amp;source=embed&amp;output=svembed`;
-                //let GoogleStreetView = `<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="${url}"></iframe>`;
+                    //https://stackoverflow.com/questions/387942/google-street-view-url
+                    //http://web.archive.org/web/20110903160743/http://mapki.com/wiki/Google_Map_Parameters#Street_View
+                    //https://maps.google.com/maps?q=barcelona&amp;aq=f&amp;ie=UTF8&amp;hl=es&amp;hq=&amp;hnear=Barcelona,+Catalu%C3%B1a&amp;ll=41.385064,2.173404&amp;spn=0.32884,0.727158&amp;t=h&amp;z=11&amp;layer=c&amp;cbll=41.384233,2.177893&amp;panoid=cHQCwlORibRoxMqj2m9IVg&amp;cbp=12,0,,0,0&amp;source=embed&amp;output=svembed
+                    //https://maps.google.com/maps?layer=c&amp;cbll={latitude},{longitude}&amp;cbp=,{bearing},{tilt},{zoom},{pitch}&amp;source=embed&amp;output=svembed
+                    //const url = `https://maps.google.com/maps?layer=c&amp;cbll=${lat + ", " + lng}&amp;cbp=12,0,0,0,0&amp;source=embed&amp;output=svembed`;
+                    //let GoogleStreetView = `<iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="${url}"></iframe>`;
 
 
-                let datiCatastoTxt = datiCatasto.TIPOLOGIA == "PARTICELLA" ? `<b>&#128220;: ${datiCatasto.DENOM}<br>&#128209;: Foglio ${datiCatasto.FOGLIO} Mappale ${datiCatasto.NUM_PART}</b>` : `<b>${datiCatasto.COMUNI} ${datiCatasto.TIPOLOGIA}</b>`;
-                let datiIndirizzoTxt = `<span>&#128234;: ${nominatim.address.road}, ${nominatim.address.house_number | 0} - ${nominatim.address.postcode} ${nominatim.address.town} (${nominatim.address["ISO3166-2-lvl6"].substr(nominatim.address["ISO3166-2-lvl6"].indexOf("-") + 1, 2)})</span>`;
-                let datiCoordinateTxt = `<i>&#128204;: ${lat}, ${lng}</i>`;
-                let datiAuthorTxt = `<b style="font-size: 0.8em;"><i onclick="window.About()" style="color: #ff0f64; cursor: pointer">by Ruslan</i>&nbsp;&#169;</b>`;
-                let datiLicenceTxt = `<a href="https://osm.org/copyright" style="font-size: 0.6rem" target="_blank">Data © OpenStreetMap contributors, ODbL 1.0.</a>`;
-                let content = `${datiCatastoTxt}<br><br>${datiIndirizzoTxt}<br>${datiCoordinateTxt}<br><br>${datiAuthorTxt} - ${datiLicenceTxt}`; //<div style="height: 200px" id="GoogleStreetView"></div>
+                    let datiCatastoTxt = datiCatasto.TIPOLOGIA == "PARTICELLA" ? `<b>&#128220;: ${datiCatasto.DENOM}<br>&#128209;: Foglio ${datiCatasto.FOGLIO} Mappale ${datiCatasto.NUM_PART}</b>` : `<b>${datiCatasto.COMUNI} ${datiCatasto.TIPOLOGIA}</b>`;
+                    let datiIndirizzoTxt = `<span>&#128234;: ${nominatim.address.road}, ${nominatim.address.house_number | 0} - ${nominatim.address.postcode} ${nominatim.address.town} (${nominatim.address["ISO3166-2-lvl6"].substr(nominatim.address["ISO3166-2-lvl6"].indexOf("-") + 1, 2)})</span>`;
+                    let datiCoordinateTxt = `<i>&#128204;: ${lat}, ${lng}</i>`;
+                    let datiAuthorTxt = `<b style="font-size: 0.8em;"><i onclick="window.About()" style="color: #ff0f64; cursor: pointer">by Ruslan</i>&nbsp;&#169;</b>`;
+                    let datiLicenceTxt = `<a href="https://osm.org/copyright" style="font-size: 0.6rem" target="_blank">Data © OpenStreetMap contributors, ODbL 1.0.</a>`;
+                    let content = `${datiCatastoTxt}<br><br>${datiIndirizzoTxt}<br>${datiCoordinateTxt}<br><br>${datiAuthorTxt} - ${datiLicenceTxt}`; //<div style="height: 200px" id="GoogleStreetView"></div>
 
-                L.popup().setLatLng(e.latlng).setContent(content).openOn(map);
+                    L.popup().setLatLng(e.latlng).setContent(content).openOn(map);
 
-                /*const panorama = new google.maps.StreetViewPanorama( //https://developers.google.com/maps/documentation/javascript/streetview?hl=it
+                    /*const panorama = new google.maps.StreetViewPanorama( //https://developers.google.com/maps/documentation/javascript/streetview?hl=it
                     document.getElementById("GoogleStreetView"), //<div style="height: 200px" id="GoogleStreetView"></div>
                     {
                         position: { lat, lng },
@@ -436,15 +468,15 @@
                         global_map.tileOverlays.gisOverlay.proprietary_tileOverlay.bringToFront(); //BETA add in 1.0.6
 
 
-                            window.News.fire({
-                                icon: 'info',
-                                title: 'Sospensione dello script delle mappe catastali: integrazione ufficiale sulla piattaforma cartografica PUC'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    const dataUrl = "https://ruslan-dzyuba.it/Catasto-in-PUC/deprecated.html";
-                                    window.open(dataUrl, '_blank').focus();
-                                }
-                            });
+                        window.News.fire({
+                            icon: 'info',
+                            title: 'Sospensione dello script delle mappe catastali: integrazione ufficiale sulla piattaforma cartografica PUC'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                const dataUrl = "https://ruslan-dzyuba.it/Catasto-in-PUC/deprecated.html";
+                                window.open(dataUrl, '_blank').focus();
+                            }
+                        });
 
                         if (new Date().getTime() <= new Date("2023-11-10T23:59:59.000Z").getTime() && !localStorage.getItem("isDismissed_News_Grid_People_Awards_2023")) {//add in 1.1.2
                             window.News.fire({
