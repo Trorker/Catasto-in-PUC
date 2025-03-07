@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Catasto in PUC
 // @namespace   https://github.com/Trorker/Catasto-in-PUC
-// @version     1.2.0
+// @version     1.2.1
 // @description Aggiunge il catasto nelle mappe PUC
 // @author      Ruslan Dzyuba
 // @downloadURL https://ruslan-dzyuba.it/Catasto-in-PUC/script/Catasto_in_PUC.user.js
@@ -48,14 +48,9 @@
     setInterval(async () => {
         let idMap = document.getElementById("map");
 
-        /*unsafeWindow.global_map.maps.leaflet.whenReady(function(){
-            console.log('Map Loaded!');
-        });*/
-
         if (idMap && !idMap.getAttribute("exist") && unsafeWindow.global_map) {
             idMap.setAttribute("exist", true);
 
-            //const { proj4 } = await import('https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js'); //https://mermaid.js.org/config/usage.html
             await fetch('https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.5.0/proj4.js')
                 .then(response => response.text())
                 .then(commits => {
@@ -74,16 +69,9 @@
                 document.body.appendChild(e);
             });
 
-            //window.proj4 = proj4.default;
-
-            //const proj4leaflet = await import('https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.2/proj4leaflet.js'); //https://mermaid.js.org/config/usage.html
-            //window.proj4 = proj4leaflet.default;
-
-            console.log('----Map Loaded!');
-
             console.log("Inject: ", GM_info.script.name, "-version: ", GM_info.script.version);
 
-            //window.ScriptUpdate(GM_info.script);
+            window.ScriptUpdate(GM_info.script);
 
             window.loadMap(unsafeWindow.global_map.maps.leaflet);
         }
