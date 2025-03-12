@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Catasto in PUC
 // @namespace   https://github.com/Trorker/Catasto-in-PUC
-// @version     1.2.2 beta
+// @version     1.2.2
 // @description Aggiunge il catasto nelle mappe PUC
 // @author      Ruslan Dzyuba
 // @downloadURL https://ruslan-dzyuba.it/Catasto-in-PUC/script/Catasto_in_PUC.user.js
