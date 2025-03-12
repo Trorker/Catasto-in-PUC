@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Catasto in PUC
 // @namespace   https://github.com/Trorker/Catasto-in-PUC
-// @version     1.2.1
+// @version     1.2.2 beta
 // @description Aggiunge il catasto nelle mappe PUC
 // @author      Ruslan Dzyuba
 // @downloadURL https://ruslan-dzyuba.it/Catasto-in-PUC/script/Catasto_in_PUC.user.js
@@ -120,9 +120,9 @@
             let vLoad = regex.exec(text) || null;
             console.log(vLoad);
             console.log(vComparator.getVersionType(vLoad[1]));
-            console.log(vComparator.compareSoftwareVersions(script.version, vLoad[1]));
+            console.log(vComparator.compareSoftwareVersions(script.version, vLoad[1].trim()));
 
-            switch (vComparator.compareSoftwareVersions(script.version, vLoad[1])) {
+            switch (vComparator.compareSoftwareVersions(script.version, vLoad[1].trim())) {
                 case (-1):
                     // it's old version
                     window.Swal.fire({
